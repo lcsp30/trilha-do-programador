@@ -17,7 +17,9 @@ const router = createBrowserRouter([
     path:"codigos",
     element:<EditorCodigo/>,
   },
-]);
+],{
+  basename: "/trilha-do-programador"
+});
 
 createRoot(document.getElementById('root')).render(
  <RouterProvider router={router}/>
