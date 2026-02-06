@@ -1,0 +1,138 @@
+.containerBody{
+    min-height: 100vh;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.headerNav{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    background: #1B1E4F;
+    background: linear-gradient(90deg,rgba(27, 30, 79, 1) 10%, rgba(0, 4, 5, 0.93) 100%);
+}
+
+.navLinks{
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+    gap: 30px;
+}
+
+.links{
+    text-decoration: none;
+    padding: 10px;
+    color: #ffffff;
+}
+
+.btnNav{
+    padding: 15px;
+    width: 120px;
+    border: none;
+    border-radius: 10px;
+    color: black;
+}
+
+.divBtnDesafio{
+    position: absolute;
+    bottom: 15vh;
+    left: 42vw;
+}
+
+.btnDesafio{
+    width: 300px;
+    border-radius: 10px;
+    height: 74px;
+    font-size: 20px;
+}
+
+.divSesao1{
+    padding: 20px;
+    padding-bottom: 100px;
+    background: linear-gradient(180deg,rgba(0, 4, 5, 1) 0%, rgba(27, 30, 79, 1) 30%);
+}
+
+
+.divTodosDesafios{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100vh;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transition: background-image 0.5s ease-in-out;
+    border-radius: 10px;
+}
+
+.divDesafio{
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-end;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.divTituloDesafio{
+    display: flex;
+   align-items: center;
+   justify-content: center;
+    width: 100%;
+    height: 70px;
+    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.divTitulo{
+    height: 90vh;
+    color: white;
+    background: #1B1E4F;
+    background: linear-gradient(360deg,rgba(27, 30, 79, 1) 15%, rgba(0, 4, 5, 0.93) 100%);
+    /* position: relative; */
+    /*
+    background-image: url('./assets/404212\ 2.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; */
+}
+
+.titulo{
+    font-size: 120px;
+}
+
+.subTitulo{
+    margin-top: 35px;
+    margin-left: 10px;
+}
+
+.divTextos{
+    position: absolute;
+    top: 20vh;
+    margin-left: 90px;
+}
+
+.divBr{
+    background-image: url("../assets/brBandeira.jpg");
+}
+
+.divUsa{
+  background-image: url("../assets/usaBandeira.jpeg");
+}
+
+.divFranca{
+  background-image: url("../assets/francaBandeirajpg.jpg");
+}
+
+.divItalia{
+  background-image: url("../assets/italiaBandeira.jpg");
+}
+
+.divJapao{
+  background-image: url("../assets/japaoBandeira.jpg");
+}

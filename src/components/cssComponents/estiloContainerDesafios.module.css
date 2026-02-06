@@ -1,0 +1,15 @@
+.caixa1{
+    width: 80%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.img1{
+    width: 100%;
+    border-radius: 5px;
+}
+
+.contexto p{
+    margin: 0;
+    color: white;
+}

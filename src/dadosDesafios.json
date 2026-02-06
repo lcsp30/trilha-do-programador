@@ -1,0 +1,138 @@
+{
+    "brasil":[
+        {
+            "titulo":"Padaria da Maria",
+            "contexto":"João foi a Padaria de Maria e comprou **5 pães**, onde a unidade do Pão custa **R$ 1,00**.",
+            "desafio":"Você deve elaborar um código que calcule e mostre o **valor total** que João deve pagar."
+        },
+        {
+            "titulo":"Clima em São Paulo",
+            "contexto":"Suzana mora em São Paulo e quer saber como está o clima hoje, ela informou que a temperatura é **30** graus Celsius.",
+            "desafio":"• mostre \"Frio\" se a temperatura for menor que 18\n\n • mostre \"Agradável\" se estiver entre 18 e 28\n\n • mostre \"Quente\" se for maior que 28"
+        },
+        {
+            "titulo":"Votação do Pedro",
+            "contexto":"Pedro tem **17 anos** e quer saber se já pode votar no Brasil.",
+            "desafio":"• mostre \"Pode votar\" se a idade for maior ou igual a 16\n\n• mostre \"Não pode votar\" caso contrário"
+        },
+        {
+            "titulo":"Conta de Luz da Ana",
+            "contexto":"Ana recebeu sua conta de luz no valor de **R$ 95,00**. Contas abaixo de **R$ 100,00** recebem **10% de desconto**.",
+            "desafio":"Crie um código que calcule o **valor final da conta** após o desconto, se houver."
+        },
+        {
+            "titulo":"Ingressos Restantes",
+            "contexto":"Um time de futebol disponibilizou **1000 ingressos** para um jogo de futebol, mas apenas **300 ingressos** foram vendidos.",
+            "desafio":"Crie um código que calcule quantos ingressos sobraram e mostre o resultado."
+        }
+    ],
+    "usa":[
+    {
+        "titulo": "Compras em Nova York",
+        "contexto": "John foi a uma loja em Nova York e comprou um produto que custa **20 dólares**. O valor do dólar hoje é **5 reais**.",
+        "desafio": "Você deve elaborar um código que calcule e mostre o valor do produto em **reais**."
+    },
+    {
+        "titulo": "Horário de Trabalho",
+        "contexto": "Emily trabalha em um escritório nos Estados Unidos. Agora são **14 horas**.",
+        "desafio": "• mostre \"Horário de trabalho\" se o horário estiver entre 9 e 17\n\n• mostre \"Fora do horário de trabalho\" caso contrário"
+    },
+    {
+        "titulo": "Nota Escolar",
+        "contexto": "Michael fez uma prova e tirou **7,5**.",
+        "desafio": "• mostre \"Aprovado\" se a nota for maior ou igual a 6\n\n• mostre \"Reprovado\" se for menor que 6"
+    },
+    {
+        "titulo": "Pedido no Fast-food",
+        "contexto": "Sarah fez um pedido em um fast-food no valor de **15 dólares**. Pedidos abaixo de **20 dólares** pagam uma taxa de entrega de **5 dólares**.",
+        "desafio": "Você deve elaborar um código que calcule e mostre o **valor final do pedido**."
+    },
+    {
+        "titulo": "Primeira Carteira de Motorista",
+        "contexto": "Jake tem **15 anos** e quer saber se já pode dirigir nos Estados Unidos.",
+        "desafio": "• mostre \"Pode dirigir\" se a idade for maior ou igual a 16\n\n• mostre \"Não pode dirigir\" caso contrário"
+    }
+],
+
+   "franca":[
+    {
+        "titulo": "Manhã em Paris",
+        "contexto": "Claire acordou cedo em Paris. Agora são **9 horas da manhã**.",
+        "desafio": "• mostre \"Bonjour\" se o horário for antes das 18 horas\n\n• mostre \"Bonsoir\" se for depois das 18 horas"
+    },
+    {
+        "titulo": "Café ou Chá",
+        "contexto": "Pierre foi a um café francês. Hoje ele escolheu **café**.",
+        "desafio": "Crie um código que mostre a mensagem: \"Você escolheu café. Bonne dégustation!\""
+    },
+    {
+        "titulo": "Hotel em Paris",
+        "contexto": "Sophie está hospedada em um hotel em Paris. O valor da diária é **80 euros** e ela ficou **3 noites**.",
+        "desafio": "Crie um código que calcule e mostre o **valor total da hospedagem**."
+    },
+    {
+        "titulo": "Boas-vindas ao Turista",
+        "contexto": "Um turista chegou à França. Ele fala **inglês**.",
+        "desafio": "Crie um código que mostre a mensagem: \"Welcome to France!\""
+    },
+    {
+        "titulo": "Passeio no Louvre",
+        "contexto": "Marc quer visitar o Museu do Louvre. Hoje a temperatura está em **22 graus**.",
+        "desafio": "• mostre \"Ótimo dia para passear\" se a temperatura estiver entre 18 e 25\n\n• mostre \"Clima não ideal para passeio\" caso contrário"
+    }
+],
+    "italia":[
+    {
+        "titulo": "Pizza entre Amigos",
+        "contexto": "Luca foi a uma pizzaria em Roma com seus amigos. A pizza custou **40 euros** e será dividida entre **4 pessoas**.",
+        "desafio": "Crie um código que calcule e mostre quanto cada pessoa deve pagar."
+    },
+    {
+        "titulo": "Restaurante Lotado",
+        "contexto": "Giulia chegou a um restaurante em Roma. O restaurante tem **20 mesas**, e **20 já estão ocupadas**.",
+        "desafio": "• mostre \"Há mesas disponíveis\" se existirem mesas livres\n\n• mostre \"Restaurante lotado\" caso contrário"
+    },
+    {
+        "titulo": "Conta com Serviço",
+        "contexto": "Marco jantou em um restaurante italiano. A conta deu **50 euros**. O restaurante cobra **10% de serviço**.",
+        "desafio": "Crie um código que calcule e mostre o valor final da conta."
+    },
+    {
+        "titulo": "Sorveteria Italiana",
+        "contexto": "Sofia foi a uma sorveteria e escolheu o sabor **chocolate**.",
+        "desafio": "Crie um código que mostre a mensagem: \"Você escolheu sorvete de chocolate. Buon appetito!\""
+    },
+    {
+        "titulo": "Passeio de Barco",
+        "contexto": "Antonio quer fazer um passeio de barco em Veneza. O passeio só acontece se o clima estiver **ensolarado**. Hoje o clima está **ensolarado**.",
+        "desafio": "• mostre \"Passeio confirmado\" se o clima for ensolarado\n\n• mostre \"Passeio cancelado\" caso contrário"
+    }
+],
+   "japao":[
+    {
+        "titulo": "Contagem de Passos",
+        "contexto": "Kenji está treinando caminhada em um parque no Japão. O treinador pediu para ele contar de **1 até 10** durante o exercício.",
+        "desafio": "Crie um código que mostre os números de **1 até 10** no console."
+    },
+    {
+        "titulo": "Treino Diário",
+        "contexto": "Aiko está fazendo um desafio de treinos. Ela treinou por **5 dias seguidos**.",
+        "desafio": "Crie um código que mostre a mensagem \"Dia X de treino concluído!\" para cada dia de 1 até 5."
+    },
+    {
+        "titulo": "Doces Japoneses",
+        "contexto": "Hiro comprou **3 doces japoneses** por **100 ienes cada**.",
+        "desafio": "Crie um código que calcule e mostre o **valor total** que Hiro gastou."
+    },
+    {
+        "titulo": "Economia Mensal",
+        "contexto": "Yumi está guardando dinheiro todos os meses. Ela economiza **200 ienes por mês** durante **6 meses**.",
+        "desafio": "Crie um código que calcule e mostre quanto ela terá ao final de 6 meses."
+    },
+    {
+        "titulo": "Horário do Metrô",
+        "contexto": "Takashi quer pegar o metrô em Tóquio. Agora são **23 horas**. O metrô funciona das **5 às 23 horas**.",
+        "desafio": "• mostre \"Metrô funcionando\" se estiver entre 5 e 23\n\n• mostre \"Metrô fechado\" caso contrário"
+    }
+]
+}

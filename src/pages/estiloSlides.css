@@ -1,0 +1,8 @@
+.swiper-slide {
+  opacity: 0.5; /* Opacidade bem baixa para os inativos */
+  transition: opacity 0.1s ease; /* Transição suave */
+}
+
+.swiper-slide-active {
+  opacity: 1; /* Slide central totalmente visível */
+}
