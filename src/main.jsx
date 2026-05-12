@@ -11,12 +11,12 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
+    element: <EditorCodigo/>,
   },
-  {
-    path:"codigos",
-    element:<EditorCodigo/>,
-  },
+  // {
+  //   path:"codigos",
+  //   element:<EditorCodigo/>,
+  // },
 ],{
   basename: "/trilha-do-programador"
 });
