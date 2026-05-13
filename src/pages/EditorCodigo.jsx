@@ -109,29 +109,28 @@ const tipos = {
         "Problema relacionado ao eval(): ",
 
     RangeError:
-        "Valor fora do intervalo permitido: ",
+        "Vixee, Valor fora do intervalo permitido: ",
 
     ReferenceError:
-        "Variável, função ou objeto inexistente: ",
+        "Égua mano(a), isso que tu escreveu não existe ou tá referenciando errado: ",
 
     SyntaxError:
-        "Código escrito incorretamente: ",
+        "Égua considerado(a), tá escrevendo o código errado (Erro de Sintaxe): ",
 
     TypeError:
-        "Operação inválida para o tipo informado: ",
+        "Aí não, esse teu código tá meio remista, operação inválida para o tipo informado: ",
 
     URIError:
         "Problema em encodeURI/decodeURI: ",
 
     AggregateError:
-        "Vários erros agrupados em um único erro: ",
+        "Vixeee, deu ruim, vários erros agrupados em um único erro: ",
 
     InternalError:
         "Erro interno da engine JavaScript: "
-
 };
 
-  function voltarHome() {
+  function voltarHome(){
     nav('/');
   }
 
