@@ -2,21 +2,15 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter } from 'react-router'
 import { RouterProvider } from 'react-router'
-import './index.css'
-import App from './pages/App.jsx'
-import EditorCodigo from './pages/EditorCodigo.jsx'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import './styles/index.css'
+import EditorCodigo from './pages/EditorCodigo/EditorCodigo.jsx'
+
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <EditorCodigo/>,
   },
-  // {
-  //   path:"codigos",
-  //   element:<EditorCodigo/>,
-  // },
 ],{
   basename: "/trilha-do-programador"
 });

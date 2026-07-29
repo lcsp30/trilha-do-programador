@@ -1,14 +1,4 @@
 
-const code = `
-variavel   v = 2;
-variavel y;
-leia(y) ;
-
-se(y > v){
-mostrar(v);
-}
-`;
-
 function traduzir(code){
     let i = 0;
     let novoCode = ""; 
@@ -46,7 +36,7 @@ function traduzir(code){
                 case "mostrar":
                 novoCode += "console.log";
                      break;
-                case "leia":
+                case "leia": {
                     let variavel = "";
                     if(code[i] === "("){
                         i++;
@@ -71,6 +61,7 @@ function traduzir(code){
                     }
                    
                     break;
+                }
                 case "funcao":
                 case "função":
                 novoCode += "function";

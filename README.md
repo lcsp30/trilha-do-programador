@@ -1,19 +1,96 @@
-# React + Vite
+# Trilha do Programador
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Plataforma interativa de ensino de programação onde o usuário escreve código em um pseudocódigo em português que é traduzido para JavaScript e executado no navegador.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Editor de código** com syntax highlighting via CodeMirror
+- **Transpilador** de pseudocódigo português → JavaScript
+- **Execução em tempo real** do código no navegador
+- **Mensagens de erro traduzidas** para português com linguagem acessível
+- **Painel de saída** para visualizar resultados de `mostrar()` e erros
 
-## React Compiler
+### Palavras-chave suportadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Pseudocódigo   | JavaScript       |
+|----------------|------------------|
+| `variavel`     | `var`            |
+| `mostrar()`    | `console.log()`  |
+| `leia()`       | `prompt()`       |
+| `se`           | `if`             |
+| `senao`        | `else`           |
+| `enquanto`     | `while`          |
+| `para`         | `for`            |
+| `funcao`       | `function`       |
+| `retornar`     | `return`         |
+| `verdadeiro`   | `true`           |
+| `falso`        | `false`          |
+| `nulo`         | `null`           |
+| `classe`       | `class`          |
+| `novo`         | `new`            |
+| `isto`         | `this`           |
 
-## Expanding the ESLint configuration
+## Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- [React 19](https://react.dev) + [Vite 7](https://vite.dev)
+- [CodeMirror 6](https://codemirror.net) (editor)
+- [React Router 7](https://reactrouter.com)
+- [React Markdown](https://github.com/remarkjs/react-markdown)
+- [React Icons](https://react-icons.github.io/react-icons)
 
-## Pagina
-https://lcsp30.github.io/trilha-do-programador/
+## Estrutura do Projeto
+
+```
+src/
+├── main.jsx                         # Entry point e router
+├── styles/
+│   └── index.css                    # Reset global
+├── utils/
+│   └── logicaTraducao.js            # Transpilador pseudocódigo → JS
+└── pages/
+    └── EditorCodigo/
+        ├── EditorCodigo.jsx         # Editor, execução e painel de saída
+        └── EditorCodigo.module.css  # Estilos do editor
+```
+
+## Começando
+
+### Pré-requisitos
+
+- [Node.js](https://nodejs.org) 18+
+
+### Instalação
+
+```bash
+npm install
+```
+
+### Desenvolvimento
+
+```bash
+npm run dev
+```
+
+Acesse `http://localhost:5173/trilha-do-programador/` no navegador.
+
+### Build
+
+```bash
+npm run build
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+## Deploy
+
+O projeto é publicado no GitHub Pages:
+
+```bash
+npm run deploy
+```
+
+URL: [lcsp30.github.io/trilha-do-programador](https://lcsp30.github.io/trilha-do-programador)

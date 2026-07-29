@@ -1,11 +1,10 @@
 import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
-import estilo from "./estiloEditorCodigo.module.css";
-import { useLocation } from 'react-router';
+import estilo from "./EditorCodigo.module.css";
 import Markdown from 'react-markdown';
 import { useNavigate } from 'react-router';
 import { useState, useCallback } from 'react';
-import traduzir from '../logicaTraducao';
+import traduzir from '../../utils/logicaTraducao';
 import { consoleDark } from '@uiw/codemirror-theme-console';
 import { EditorView } from "@codemirror/view";
 
@@ -24,7 +23,6 @@ function EditorCodigo(){
   let [code, setCode] = useState("mostrar('Ola Mundo!');");
   let [resultado, setResultado] = useState("");
   let [executouComSucesso, setExecutouComSucesso] = useState(false);
-  const location = useLocation();
   const nav = useNavigate();
 
   const traducoes = {
