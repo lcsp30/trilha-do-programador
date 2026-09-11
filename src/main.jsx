@@ -3,12 +3,17 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter } from 'react-router'
 import { RouterProvider } from 'react-router'
 import './styles/index.css'
-import EditorCodigo from './pages/EditorCodigo/EditorCodigo.jsx'
+import EditorCodigo from './pages/EditorCodigo/EditorCodigo.jsx';
+import Login from './pages/Login/Login.jsx';
 
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/login",
+    element: <Login/>,
+  },
+  {
+    path: "/editor",
     element: <EditorCodigo/>,
   },
 ],{

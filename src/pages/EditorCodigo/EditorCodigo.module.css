@@ -17,9 +17,9 @@
   --glow-green: rgba(63, 185, 80, 0.2);
 }
 
-* {
+/* * {
   font-family: 'JetBrains Mono', monospace;
-}
+} */
 
 .divPrincipal {
   display: flex;
