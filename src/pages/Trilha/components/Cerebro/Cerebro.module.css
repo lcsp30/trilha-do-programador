@@ -1,0 +1,12 @@
+/* Cerebro — o cérebro com os traços de circuito à direita, desenhado em UMA cor: o Carvão do
+   Traço.
+
+   Os dois paths do arquivo de origem já eram `#231f20` — um com `fill="#231f20"`
+   inline e outro com `style="fill: rgb(35, 31, 32)"` —, então não houve tradução
+   de paleta a fazer: só tirar o `data-original` que o editor deixa em cada forma
+   (é a cor da arte original, não serve para nada aqui) e o `opacity="1"` inerte.
+   Se um dia os sinais de fora precisarem de outra tinta, eles são um path só,
+   o segundo do arquivo (o contorno do cérebro junto com os traços e as bolinhas); */
+.carvao {
+  fill: #231f20;
+}

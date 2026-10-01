@@ -1,0 +1,12 @@
+/* Processador — o processador de UMA cor. A tinta é o Carvão do Traço, o mesmo
+   `#231f20` que o resto da referência usa como desenho.
+
+   No arquivo de origem quem pintava era um `<linearGradient>` com SEIS stops —
+   só que os seis são `#231f20`, ou seja, um gradiente CHAPADO: nenhum degradê,
+   só passos inúteis de export. Aqui ele virou uma cor só, e o `url(#SVGID_1_)`
+   do path virou esta classe. Se um dia a peça precisar de volume, é neste ponto
+   que se troca por um `linearGradient` de verdade — mas aí com cores diferentes
+   nos stops, senão não muda nada. */
+.corpo {
+  fill: #231f20;
+}

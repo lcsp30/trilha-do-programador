@@ -1,0 +1,46 @@
+/* Controle — peça de CHAPA: formas cheias, sem traço.
+   Cada classe é uma PARTE visível do controle, e o comentário de cada uma
+   registra a cor que o ícone de origem usava ali — é o mapa da tradução de
+   paleta. */
+
+/* O selo oval, o fundo de tudo (era o violeta #464BD8). */
+.selo {
+  fill: var(--cor-texto);
+  stroke: none;
+}
+
+/* A carcaça e o aro claro do analógico (no ícone os dois eram #FFFFFF). */
+.carcaca,
+.analogicoAro {
+  fill: var(--cor-superficie);
+  stroke: none;
+}
+
+/* A tinta escura da peça: o contorno do controle, os três botões, a borda do
+   analógico e o fio. No ícone eram #151B28, e dois desses paths vinham com
+   `fill=""` — que NÃO é transparente, pinta preto.
+   O valor é literal, e não token, igual ao `.relevo` da Seta e ao `.codigo` da
+   JanelaEditor: é a mesma tinta da referência. */
+.contorno,
+.fio {
+  fill: #231f20;
+  stroke: none;
+}
+
+.botoes{
+  fill: var(--cor-superficie);
+  stroke: none;
+}
+
+.miolo,
+.analogicoBorda{
+  fill: #231f20;
+  stroke: none;
+}
+
+/* O miolo do controle e o disco do analógico (na origem os dois eram o menta
+   #2AEFC8). */
+.analogico {
+  fill: var(--cor-superficie);
+  stroke: none;
+}

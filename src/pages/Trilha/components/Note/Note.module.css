@@ -1,0 +1,31 @@
+/* Note — o notebook, peça MISTA: a carcaça e a tela são CHAPA (formas cheias)
+   e por cima vêm o contorno e o `</>` como TRAÇO. Os dois grupos estão
+   separados no componente, e é por isso que as classes de traço declaram
+   `fill: none` e as de chapa não. */
+
+/* A tampa e a base — no ícone de origem as duas eram o Concreto do Painel
+   #c6c8c2. */
+.tampa,
+.base {
+  fill: var(--cor-superficie);
+  stroke: none;
+}
+
+/* A tela — no ícone era o Papel do Mapa #f7f3e5. */
+.tela {
+  fill: var(--cor-texto);
+  stroke: none;
+}
+
+/* O contorno do notebook — no ícone era o Petróleo Noturno #071a20, que é
+   também a cor do fundo da página: sobre o fundo escuro ele some. */
+.contorno {
+  fill: none;
+  stroke: #071a20;
+}
+
+/* O `</>` dentro da tela — no ícone era o Concreto do Painel #c6c8c2. */
+.codigo {
+  fill: none;
+  stroke: var(--cor-superficie);
+}

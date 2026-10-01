@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+
+.pagina {
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--fonte-interface);
+  min-height: 100vh;
+}
+
+
+.conteudo {
+  background-image:linear-gradient(90deg, rgba(3, 17, 22, 0.3), rgba(3, 17, 22, .5)),
+  url("../../../public/backgroud_trilha.png");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-attachment: fixed;
+  flex: 1;
+  min-height: 0;
+  min-width: 100%;
+  padding: 1rem;
+}
+
+.resumo,
+.tituloSecao {
+  margin: 0 auto;
+  max-width: 1000px;
+  position: relative;
+}
+
+/* Bloco (e não grid): a altura do .boardGame vem de aspect-ratio nos filhos,
+   e um grid pai não cresce para conter esse tipo de filho — ele vaza. */
+.secaoTrilha {
+  display: block;
+  margin-top: 0.5em;
+}
+
+
+.resumo {
+  align-items: end;
+  display: flex;
+  gap: 3rem;
+  justify-content: space-between;
+  padding-bottom: 3rem;
+}
+
+.identidadeNivel {
+  align-items: center;
+  display: flex;
+  gap: 1.25rem;
+  max-width: 580px;
+}
+
+.identidadeNivel img {
+  border: 1px solid var(--cor-linha);
+  height: 48px;
+  object-fit: cover;
+  width: 72px;
+}
+
+.eyebrow {
+  color: var(--cor-ciano);
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  margin: 0 0 0.65rem;
+  text-transform: uppercase;
+}
+
+.identidadeNivel h1 {
+  font-size: clamp(1.35rem, 3vw, 2.3rem);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  margin: 0 0 0.65rem;
+}
+
+.identidadeNivel p:last-child {
+  color: var(--cor-suave);
+  font-size: 0.76rem;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.progressoResumo {
+  border-left: 1px solid var(--cor-linha);
+  min-width: 180px;
+  padding-left: 1.25rem;
+}
+
+.progressoResumo > span,
+.progressoResumo small {
+  color: var(--cor-suave);
+  display: block;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+}
+
+.progressoResumo strong {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0.45rem 0;
+}
+
+.progressoBarra {
+  background: rgba(247, 243, 229, 0.2);
+  height: 4px;
+  margin-bottom: 0.55rem;
+  width: 100%;
+}
+
+.progressoBarra span {
+  background: var(--cor-amarela);
+  display: block;
+  height: 100%;
+}
+
+.progressoResumo small { font-size: 0.55rem; }
+
+.tituloSecao {
+  align-items: end;
+  border-bottom: 1px solid var(--cor-linha);
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.8rem;
+}
+
+.tituloSecao h2 {
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  font-weight: 500;
+  margin: 0;
+}
+
+.tituloSecao > span {
+  color: var(--cor-suave);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+}
+
+
+/* ===== TABULEIRO DA TRILHA (baseado em ref.css) ===== */
+
+.boardGame {
+  display: grid;
+  justify-items: center;
+  margin-top: 0.5em;
+  width: 100%;
+}
+
+.boardSection {
+  display: grid;
+  max-width: 1166px;
+  position: relative;
+  width: 100%;
+}
+
+/* svg e conteúdo ocupam a MESMA célula: o traçado fica atrás, o card por cima */
+.boardSection > * {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/* Cada seção tem a SUA própria geometria (aspect-ratio da referência).
+   Por isso elas não podem ser geradas em loop. */
+.board01 { aspect-ratio: 1166 / 670; max-height: 670px; }
+.board02 { aspect-ratio: 1166 / 334; max-height: 334px; }
+.board03 { aspect-ratio: 1166 / 376; max-height: 376px; }
+.board04 { aspect-ratio: 1166 / 496; max-height: 496px; }
+/* 276 (e não 266): a curva da board05 desce até y=228 no meio do trecho e o
+   traço tem 84 de espessura, então a borda de baixo dele chega a 270. Com 266 a
+   seção fatiava a estrada no fundo (o `overflow: hidden` do `.boardGraphic`),
+   deixando um corte reto visível — 276 dá 6 unidades de folga. */
+.board05 { aspect-ratio: 1166 / 276; max-height: 276px; }
+
+/* Curvas e conectores se sobrepõem 1px para a emenda não aparecer */
+.board01,
+.board02,
+.board03,
+.board04,
+.board05,
+.boardConector {
+  margin: -1px 0;
+}
+
+/* Conectores: traço vertical longo na borda, espaço livre no resto.
+   Esquerda e direita têm a MESMA geometria — quem decide de que lado o traço
+   corre é a curva passada no JSX (conectorEsquerda / conectorDireita). */
+.boardConector {
+  aspect-ratio: 1166 / 500;
+}
+
+.boardGraphic {
+  display: grid;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+}
+
+.boardGraphic > svg {
+  grid-column: 1;
+  grid-row: 1;
+  height: 100%;
+  margin-top: -0.06em;
+  width: 100%;
+}
+
+.boardGraphic > svg:first-of-type {
+  overflow: visible;
+}
+
+/* camadas do traçado — antes eram `class="undefined"` porque não existiam */
+.beigeStroke path { fill: none; stroke: #23e2df; stroke-width: 84; }
+.charcoalOutline path { fill: none; stroke: #231f20; stroke-width: 80; }
+.beigePath path { fill: none; stroke: #c6c8c2; stroke-width: 70; }
+.gameLines path { fill: none; stroke: #231f20; stroke-width: 70; }
+
+/* ===== POSICIONAMENTO DOS DESAFIOS =====
+   A aparência do card vive em src/components/CartaoDesafio.
+   Aqui decidimos apenas ONDE cada card cai dentro da sua seção. */
+
+.slot1{
+  left: 52%;
+  position: absolute;
+  top: 30%;
+  transform: translateX(-50%);
+}
+
+.slot2{
+  position: absolute;
+  left: 16%;
+  top: 5%;
+}
+
+.slot3{
+  position: absolute;
+  left: 55%;
+  top: 85%;
+}
+
+.slot4{
+  position: absolute;
+  left: 50%;
+  top: 15%;
+}
+
+.slot5{
+  position: absolute;
+  left: 8%;
+  top: 105%;
+}
+
+.slot6{
+  position: absolute;
+  left: 15%;
+  top: 20%;
+}
+
+.slot7{
+  position: absolute;
+  left: 55%;
+  top: 75%;
+}
+
+.slot8{
+  position: absolute;
+  left: 10%;
+  top: -10%;
+}
+
+.slot9{
+  position: absolute;
+  left: 57%;
+  top: 77%;
+}
+
+.slot10{
+  position: absolute;
+  left: 50%;
+  top: 30%;
+}
+
+/* Letreiro da placa verde do início. Em SVG com viewBox as unidades são do
+   desenho, então o texto escala junto com a seção. */
+.placaInicio {
+  fill: var(--cor-texto-escuro);
+  font-family: var(--fonte-interface);
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0.05rem;
+}
+
+/* Texto da placa azul. Em SVG com viewBox as unidades são do desenho,
+   então o texto escala junto com a seção. */
+.placaTexto {
+  fill: var(--cor-texto-escuro);
+  font-family: var(--fonte-interface);
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+.caminho {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+
+@media (max-width: 700px) {
+  .resumo { align-items: flex-start; flex-direction: column; gap: 2rem; }
+  .progressoResumo { border-left: 0; border-top: 1px solid var(--cor-linha); padding: 1rem 0 0; width: 100%; }
+
+  /* Seções mais altas: no mobile os dois cards da mesma seção empilham.
+     O ajuste fino de cada card (slot1…slot10) ainda será escrito aqui. */
+  .boardConector { aspect-ratio: 1166 / 900; }
+  .board01 { aspect-ratio: 1166 / 820; }
+}

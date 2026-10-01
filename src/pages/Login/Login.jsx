@@ -1,15 +1,25 @@
 import estilo from "./Login.module.css";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 function Login() {
   const [loginAtivo, setLoginAtivo] = useState(true);
+  const navigate = useNavigate();
+
+  function entrarNaTrilha(event) {
+    event.preventDefault();
+    navigate("/niveis");
+  }
 
   return (
     <div className={estilo.divPrincipal}>
       <main className={estilo.main}>
         <div className={estilo.divTitulo}>
-          <h1>TRILHA DO PROGRAMADOR</h1>
+          <h1>
+            <span>TRILHA</span>
+            <span>DO PROGRAMADOR <em className={estilo.simbolo}>{"</>"}</em></span>
+          </h1>
         </div>
         <div className={estilo.divDiscricao_Login}>
           <div className={estilo.divDiscricao}>
@@ -63,7 +73,7 @@ function Login() {
             </nav>
             <div className={estilo.divFormInterna}>
               {loginAtivo == true && (
-                <form action="">
+                <form onSubmit={entrarNaTrilha}>
                   <div style={{ marginBottom: "20px" }}>
                     <h3>Login</h3>
                      <hr style={{ margin: "0.5rem 0px" }} />
@@ -85,7 +95,7 @@ function Login() {
               )}
 
               {loginAtivo == false && (
-                <form action="">
+                <form onSubmit={entrarNaTrilha}>
                   <div style={{ marginBottom: "20px" }}>
                     <h3>Cadastro</h3>
                      <hr style={{ margin: "0.5rem 0px" }} />
@@ -114,7 +124,7 @@ function Login() {
               <hr className={estilo.hr2} />
               <p style={{ textAlign: "center", marginBottom: "7px" }}>ou</p>
 
-              <button className={estilo.btnGoogle}>
+              <button className={estilo.btnGoogle} type="button" onClick={() => navigate("/niveis")}>
                 <FcGoogle size={25} />
                 Entrar com o Google
               </button>

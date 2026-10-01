@@ -1,0 +1,40 @@
+/* Text10 — a placa DEITADA com o letreiro "INSTRUÇÕES", irmã da `Text01`
+   (DIVIRTA-SE / NESSA JORNADA), da `Text04` (PROGRAMAÇÃO), da `Text05` (LÓGICA
+   SIMPLES) e da `Text07` (PORTUGUÊS - BR). */
+
+/* A chapa de TRÁS, em Carvão do Traço — o `#231f20` do arquivo de origem. É ela
+   que dá o relevo: fica deslocada um fio em relação à da frente, e é esse
+   desencontro que se lê como espessura.
+   Nesta placa as chapas NÃO têm `transform` próprio, então não há origem de giro
+   para declarar (o `style=""` vazio que veio na chapa de trás era resto do
+   export). */
+.placaTras {
+  fill: #231f20;
+}
+
+/* A chapa da FRENTE: o `rgb(247, 243, 229)` do arquivo é o Papel do Mapa, o
+   token `--cor-texto`. O contorno de 1,23 NÃO está aqui — vive num `<g>` no
+   componente, em volta das duas chapas. */
+.placaFrente {
+  fill: var(--cor-texto);
+}
+
+/* O letreiro — TEXTO VIVO, de uma linha só (ao contrário das placas de pé, que
+   têm uma `<tspan>` por letra). O `#333333` do arquivo vira a mesma tinta do
+   resto da referência, o Carvão do Traço.
+   O `matrix` do `<text>` (um encolhimento não-uniforme de 0,514491 por 0,437759
+   com um fio de giro) é o que faz a palavra caber, e fica no JSX.
+
+   As duas linhas de baixo são a origem desse giro, e NÃO podem ir para o JSX: o
+   React não conhece o atributo `transformBox` — avisa no console e emite
+   `transformbox`, que o navegador ignora. Sem o `transform-box: fill-box`, o
+   `49,169%` do `transform-origin` seria resolvido contra a viewport do SVG, e
+   não contra a caixa do texto: a palavra sairia do lugar. */
+.letreiro {
+  fill: #231f20;
+  font-family: var(--fonte-interface);
+  font-size: 41.1105px;
+  font-weight: 600;
+  transform-box: fill-box;
+  transform-origin: 49.169% 63.6174%;
+}

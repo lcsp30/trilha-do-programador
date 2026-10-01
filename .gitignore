@@ -24,7 +24,10 @@ dist-ssr
 *.sw?
 
 .kilo
-
+.impeccable
 .vscode
-
+DESIGN.md
+PRODUCT.md
+.github
 .cline/
+graphify-out

@@ -1,0 +1,19 @@
+/* Seta02 — peça de CHAPA: as duas formas são cheias e o relevo vem da
+   sobreposição, não de traço. Terceira seta do tabuleiro, com desenho próprio
+   (uma curva aberta, como as outras duas).
+   DIFERENÇA em relação à `Seta`: aqui as classes NÃO declaram `stroke` de
+   propósito — o contorno de 1,23 e a cor dele vêm do arquivo de origem e ficam
+   no componente, porque valem para as duas camadas. */
+
+/* A camada de trás — no arquivo de origem era o Carvão do Traço #231f20.
+   A cor é a TINTA, e não a cor do fundo: a seta cai em cima do leito claro da
+   trilha, e é o contraste contra esse leito que faz a forma clara aparecer. */
+.relevo {
+  fill: #231f20;
+}
+
+/* A camada da frente — no arquivo de origem era o bege #f6f1d7, que aqui é o
+   Papel do Mapa, o token `--cor-texto`. */
+.seta {
+  fill: var(--cor-texto);
+}

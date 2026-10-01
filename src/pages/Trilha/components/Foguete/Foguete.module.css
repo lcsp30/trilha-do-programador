@@ -1,0 +1,9 @@
+.casco {
+  fill: #231f20;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+.fuselagem {
+  fill: var(--cor-texto);
+}

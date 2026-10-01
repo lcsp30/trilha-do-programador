@@ -2,28 +2,31 @@ import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 import estilo from "./EditorCodigo.module.css";
 import Markdown from 'react-markdown';
-import { useNavigate } from 'react-router';
 import { useState, useCallback } from 'react';
 import traduzir from '../../utils/logicaTraducao';
 import { consoleDark } from '@uiw/codemirror-theme-console';
 import { EditorView } from "@codemirror/view";
+import Navbar from '../../components/Navbar/Navbar';
 
 import {
-  AiOutlineRocket,
   AiOutlinePlayCircle,
-  AiOutlineArrowLeft,
   AiOutlineFileText,
   AiOutlineConsoleSql,
   AiOutlineCode,
   AiOutlineFlag,
 } from 'react-icons/ai';
 
+/* Fora do componente para o CodeMirror não reconfigurar o editor a cada render.
+   Os temas são os de sempre: `theme="dark"` (oneDark) no editor e `consoleDark`
+   na saída — quem pinta o editor e o console é o CodeMirror, não o CSS module. */
+const EXTENSOES_EDITOR = [javascript()];
+const EXTENSOES_SAIDA = [javascript(), EditorView.lineWrapping];
+
 
 function EditorCodigo(){
   let [code, setCode] = useState("mostrar('Ola Mundo!');");
   let [resultado, setResultado] = useState("");
   let [executouComSucesso, setExecutouComSucesso] = useState(false);
-  const nav = useNavigate();
 
   const traducoes = {
      // ReferenceError
@@ -128,10 +131,6 @@ const tipos = {
         "Erro interno da engine JavaScript: "
 };
 
-  function voltarHome(){
-    nav('/');
-  }
-
   function traduzirErro(msg) {
 
     for (let ingles in traducoes) {
@@ -144,7 +143,7 @@ const tipos = {
     return msg;
 }
 
-  function execultarCode() {
+  function executarCodigo() {
     let res = traduzir(code);
     let buffer = "";
     try {
@@ -166,24 +165,7 @@ const tipos = {
 
   return (
     <div className={estilo.divPrincipal}>
-      {/* HEADER */}
-      <header className={estilo.header}>
-        <div className={estilo.headerLeft}>
-          <AiOutlineRocket className={estilo.logoIcon} />
-          <span className={estilo.logoText}>
-            Trilha do <span className={estilo.logoAccent}>Programador</span>
-          </span>
-        </div>
-        <div className={estilo.headerRight}>
-          <button className={estilo.btnExecutar} onClick={execultarCode}>
-            <AiOutlinePlayCircle className={estilo.btnIcon} />
-            Executar
-          </button>
-          <button className={estilo.btnVoltar} onClick={voltarHome}>
-            <AiOutlineArrowLeft />
-          </button>
-        </div>
-      </header>
+      <Navbar voltarPara="/trilha/brasil" />
 
       {/* CONTEÚDO */}
       <div className={estilo.contentWrapper}>
@@ -213,14 +195,14 @@ const tipos = {
           <div className={estilo.editorHeader}>
             <div className={estilo.editorTab}>
               <AiOutlineCode className={estilo.editorTabIcon} />
-              <span className={estilo.editorTabName}>Codigo</span>
+              <span className={estilo.editorTabName}>Código</span>
             </div>
           </div>
           <div className={estilo.editorBody}>
             <CodeMirror
               value={code}
               height="100%"
-              extensions={[javascript()]}
+              extensions={EXTENSOES_EDITOR}
               theme="dark"
               onChange={pegarCode}
               basicSetup={{
@@ -255,8 +237,12 @@ const tipos = {
           <div className={estilo.resultadoHeader}>
             <div className={estilo.resultadoTab}>
               <AiOutlineConsoleSql className={estilo.resultadoTabIcon} />
-              <span>Saida</span>
+              <span>Saída</span>
             </div>
+            <button className={estilo.btnExecutar} onClick={executarCodigo}>
+            <AiOutlinePlayCircle className={estilo.btnIcon} />
+            Executar
+          </button>
           </div>
           <div className={estilo.resultadoBody}>
             {resultado ? (
@@ -265,7 +251,7 @@ const tipos = {
                 height="100%"
                 readOnly={true} // Desativa a escrita
                 editable={false} // Opcional: remove também o cursor de inserção (foco)
-                extensions={[javascript(), EditorView.lineWrapping]}
+                extensions={EXTENSOES_SAIDA}
                 onChange={(value) => setResultado(value)}
                 theme={consoleDark}
                 basicSetup={{
@@ -299,10 +285,16 @@ const tipos = {
                 </span>
               </div>
             )}
+              {resultado && !executouComSucesso && (
+              <div className={estilo.mensagemErro}>
+                <span className={estilo.mensagemErroIcon}>!</span>
+                Erro na execução
+              </div>
+            )}
               {executouComSucesso && (
               <div className={estilo.mensagemSucesso}>
                 <span className={estilo.mensagemSucessoIcon}>✓</span>
-                Código executado com sucesso!
+                Execução concluída
               </div>
             )}
           </div>

@@ -1,0 +1,18 @@
+/* Seta — peça de CHAPA: as duas formas são cheias e o relevo vem da
+   sobreposição, não de traço. */
+
+/* O relevo, camada de trás — Carvão do Traço, como na referência: é a forma
+   deslocada para baixo/direita que dá espessura ao adesivo.
+   A cor é a TINTA, e não a cor do fundo: a seta cai em cima do leito claro da
+   trilha, e é o contraste contra esse leito que faz a forma clara aparecer.
+   Uma forma na cor do fundo sumiria ali. */
+.relevo {
+  fill: #231f20;
+  stroke: none;
+}
+
+/* A seta, camada da frente — Papel do Mapa, a mesma cor do leito da trilha. */
+.seta {
+  fill: var(--cor-texto);
+  stroke: none;
+}

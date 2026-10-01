@@ -1,0 +1,18 @@
+/* Símbolo de traduzir — peça de TRAÇO: nada é preenchido, tudo é contorno.
+   São dois pares: os dois caracteres (o `A` e o ideograma) e as duas setas
+   curvas que mostram a passagem de um para o outro.
+   O `fill: none`, a espessura e os acabamentos valem para a peça inteira e
+   ficam num `<g>` do componente. O CSS cuida só da cor. */
+
+/* Os dois caracteres — no ícone de origem eram o Petróleo Noturno #071a20, que
+   é também a cor do fundo da página. Sobre o leito claro da trilha lê como
+   tinta; sobre o fundo escuro, some. */
+.letraA,
+.ideograma {
+  stroke: #071a20;
+}
+
+/* As duas setas curvas — no ícone eram o Concreto do Painel #c6c8c2. */
+.setas {
+  stroke: var(--cor-texto);
+}

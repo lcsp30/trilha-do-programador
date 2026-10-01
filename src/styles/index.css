@@ -1,8 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Orbitron:wght@400..900&family=Press+Start+2P&display=swap');
 
+:root {
+  --cor-fundo: #071a20;
+  --cor-texto: #f7f3e5;
+  --cor-suave: #c9c4b3;
+  --cor-ciano: #23e2df;
+  --cor-amarela: #f0c94d;
+  --cor-cinza: #c6c8c2;
+  --cor-superficie: #c6c8c2;
+  --cor-superficie-bloqueada: #aeb3ae;
+  --cor-cinza-escura: #313a3b;
+  --cor-texto-escuro: #111b1b;
+  --cor-painel-escuro: #303a3d;
+  --cor-linha: rgba(247, 243, 229, 0.3);
+  --cor-borda-escura: rgba(18, 30, 31, 0.72);
+  --cor-ciano-escura: #167b7b;
+  --cor-amarela-escura: #b99527;
+  --fonte-interface: "Orbitron", sans-serif;
+}
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Orbitron", sans-serif;
+  font-family: var(--fonte-interface);
+}
+
+/* Barra de rolagem do sistema: o fio de cabelo claro, como as separações.
+   (Estava dentro do módulo do editor, onde `::-webkit-scrollbar` não é
+   escopado e valia para o app inteiro com as cores do GitHub Dark.) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cor-linha);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(247, 243, 229, 0.5);
 }

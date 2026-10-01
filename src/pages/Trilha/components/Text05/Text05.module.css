@@ -1,0 +1,37 @@
+/* Text05 — a placa com o letreiro "LÓGICA SIMPLES". Peça de CHAPA: as duas
+   formas da placa são cheias e o relevo vem do deslocamento entre elas, como na
+   Seta. O contorno de 1,23 e a cor dele ficam no componente, porque valem para
+   as duas placas.
+   O arquivo de origem é irmão do da `Text04` — mesma placa, outra palavra —,
+   por isso as classes têm o mesmo nome das de lá. */
+
+/* A placa de trás, deslocada — no arquivo de origem era o Carvão do Traço
+   #231f20. */
+.placaTras {
+  fill: #231f20;
+}
+
+/* A placa da frente — no arquivo de origem era o #f7f3e5, que aqui é o Papel do
+   Mapa, o token `--cor-texto`. */
+.placaFrente {
+  fill: var(--cor-texto);
+}
+
+/* O letreiro. No arquivo de origem é um `<text>` em Orbitron 36,5427/600 com o
+   cinza #333333, que aqui vira a mesma tinta do resto da referência, o Carvão
+   do Traço. É o MESMO corpo da `Text04` — o que muda é só a palavra, que é mais
+   longa; por isso a placa desta é mais larga.
+   `white-space: pre` é o que preserva o espaço antes de "LÓGICA": sem ele o
+   navegador come o espaço inicial e o letreiro escorrega para a esquerda.
+   `transform-box` e `transform-origin` vêm do arquivo de origem e não são
+   enfeite: a `matrix` do `<text>` no JSX gira o bloco em torno DESTE ponto, não
+   da origem do tabuleiro. Não "consertar" esses dois números. */
+.letreiro {
+  fill: #231f20;
+  font-family: var(--fonte-interface);
+  font-size: 36.5427px;
+  font-weight: 600;
+  transform-box: fill-box;
+  transform-origin: 117.499px 29.6277px;
+  white-space: pre;
+}

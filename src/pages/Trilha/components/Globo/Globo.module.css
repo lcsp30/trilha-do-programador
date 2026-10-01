@@ -1,0 +1,67 @@
+/* Globo — as classes por PARTE da ilustração.
+
+   A paleta desta ilustração foi PADRONIZADA nos tokens do `index.css` (pedido do
+   usuário): cada classe nomeia a PARTE que se vê e o comentário registra a cor que o
+   arquivo de origem usava ali — é o mapa da tradução, sem precisar reabrir o
+   svg. Ciano e Ouro ficaram FORA: são luz e estado, não tinta de desenho.
+
+   `.contorno` é o único caso de TRAÇO: no arquivo de origem cada uma das ~12
+   formas de linha repetia `style="stroke-width:15;stroke-linecap:round;
+   stroke-linejoin:round;stroke-miterlimit:10;..."` mais os mesmos quatro
+   atributos fora do `style`. Aqui isso vive na classe, uma vez só.
+   O `#000000` do arquivo virou o Carvão do Traço (`#231f20`), a tinta de desenho
+   do `DESIGN.md`, como já foi feito no `Programador`.
+
+   ATENÇÃO à espessura: 15 é a largura do traço NO ESPAÇO DO DESENHO (dentro da
+   escala 0,150906), então ela encolhe junto com a peça — não é um valor em
+   unidades do tabuleiro. */
+.contorno {
+  fill: none;
+  stroke: #231f20;
+  stroke-width: 15;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* A ESFERA: o único DEGRADÊ da peça, e não é decorativo — é o que dá o volume ao
+   globo. No arquivo de origem o volume era feito por duas chapas (a bola clara
+   + a faixa de sombra), e o degradê radial faz o mesmo com um só preenchimento.
+   O foco fica no canto de cima à esquerda, como a luz do desenho. */
+.oceano {
+  fill: url(#globo-esfera);
+}
+
+.degradeComeco {
+  stop-color: var(--cor-texto);
+}
+
+.degradeFim {
+  stop-color: var(--cor-superficie-bloqueada);
+}
+
+/* As TERRAS: no arquivo eram TRÊS azuis (#98b9e3, #7aabdc, #89c6fc) que viravam
+   um degradê de export; no sistema as formas são chapadas, então viraram um tom. */
+.terra {
+  fill: var(--cor-superficie);
+}
+
+/* Dois tons de Concreto Apagado: a faixa de sombra dentro do mar (#dfdfdf) e a
+   aresta de baixo das barras da base (#b88080). */
+.sombraOceano,
+.baseBorda {
+  fill: var(--cor-superficie-bloqueada);
+}
+
+/* O ARO (o meridiano que passa por trás do globo) e as BARRAS da base: eram os
+   rosas `#c58e8e` e `#cfa2a2`, a mesma família em dois tons. */
+.aro,
+.base {
+  fill: var(--cor-suave);
+}
+
+/* A sombra no chão: no arquivo era o `#d5ced5`, claro porque o desenho nasceu
+   sobre fundo claro. Aqui é o aço escuro do sistema — lê sobre o leito bege da
+   trilha e sobre o petróleo da página, os dois lugares onde a peça cai. */
+.sombraChao {
+  fill: var(--cor-cinza-escura);
+}

@@ -1,0 +1,13 @@
+/* Mouse — o desenho do mouse, em UMA cor: o Carvão do Traço.
+
+   A peça é um ÍCONE DE TRAÇO: o arquivo de origem tem um `<path>` só, sem
+   `stroke` nenhum — a linha do desenho já foi expandida em contorno vetorial
+   CHEIO no editor, então a espessura dela é a do próprio `d` (e engorda junto
+   com a peça, ao contrário de um `stroke` de verdade).
+
+   O `#231f20` é o Carvão do Traço, a tinta de desenho do `DESIGN.md`. A cor vem
+   do `style="fill: rgb(35, 31, 32)"` do path, que aqui virou classe.
+ */
+.traco {
+  fill: #231f20;
+}

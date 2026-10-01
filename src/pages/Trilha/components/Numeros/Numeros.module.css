@@ -1,0 +1,16 @@
+/* Números — as placas numeradas. Peça de CHAPA: o prato é uma forma cheia e o
+   anel e o algarismo vêm por cima, na mesma tinta. */
+
+/* O prato — no desenho de origem era o bege do leito da trilha (#f9f4da), que
+   aqui é o Papel do Mapa. */
+.placa {
+  fill: var(--cor-texto);
+  stroke: none;
+}
+
+/* O anel e o algarismo — Carvão do Traço, a mesma tinta da referência. */
+.placaBorda,
+.algarismo {
+  fill: #231f20;
+  stroke: none;
+}

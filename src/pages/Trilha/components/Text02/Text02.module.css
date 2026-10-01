@@ -1,0 +1,36 @@
+/* Text02 — o bloco de cinco linhas que se apagam como um eco. Peça de TINTA, não
+   de chapa: é só contorno vetorial cheio, um `<path>` por glifo, sem nenhuma
+   forma de fundo. As cinco linhas são o MESMO texto, uma embaixo da outra. */
+
+/* A tinta das cinco linhas. No arquivo de origem já era o #231f20, que na paleta
+   do projeto é o Carvão do Traço — a mesma tinta literal da `Text01`. Sobre o
+   fundo escuro da página ele some; em cima do leito claro da trilha lê como
+   tinta. Trocar por var(--cor-texto) é o que faz a peça aparecer no escuro. */
+.linha1,
+.linha2,
+.linha3,
+.linha4,
+.linha5 {
+  fill: #231f20;
+  stroke: none;
+}
+
+/* A rampa que faz o eco: de 1 na linha de cima até 0,2 na de baixo. No arquivo de
+   origem era `fill-opacity` (mais um `stroke-opacity` que não fazia nada, porque
+   não há stroke); aqui é `opacity` pura, que dá no mesmo e vale para a linha
+   inteira. Mexer nestes números é mexer no quanto o eco some. */
+.linha2 {
+  opacity: 0.8;
+}
+
+.linha3 {
+  opacity: 0.6;
+}
+
+.linha4 {
+  opacity: 0.4;
+}
+
+.linha5 {
+  opacity: 0.2;
+}

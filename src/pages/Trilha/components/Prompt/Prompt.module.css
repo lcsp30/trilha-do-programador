@@ -1,0 +1,23 @@
+/* Prompt `>_` — a peça é feita de TRAÇO, como o `<Traco>` da trilha: duas
+   camadas empilhadas, a borda mais grossa atrás e o sinal mais fino na frente.
+   As espessuras NÃO ficam aqui: cada camada recebe `strokeWidth` como atributo,
+   porque a diferença entre elas acompanha o tamanho da peça. O CSS cuida só da
+   cor e do acabamento. */
+
+/* A borda, camada de trás — Carvão do Traço.
+   O `stroke` dela é sobrescrito com `#071a20` inline no componente: sobre o
+   fundo escuro da página, contorno carvão em peça clara vira halo sujo. */
+.borda {
+  fill: none;
+  stroke: #231f20;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* O sinal `>_`, camada da frente — Papel do Mapa, a cor do leito da trilha. */
+.sinal {
+  fill: none;
+  stroke: var(--cor-texto);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

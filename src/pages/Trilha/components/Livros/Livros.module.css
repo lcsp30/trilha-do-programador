@@ -1,0 +1,29 @@
+/* Livros — a pilha de livros com o lápis. Peça de CHAPA: todas as formas são
+   cheias, sem contorno. Cada classe é uma PARTE visível do desenho e as regras
+   AGRUPAM as partes que compartilham a tinta — é o mapa da tradução de paleta do
+   ícone de origem. */
+
+/* O papel do desenho: as capas dos três livros (#f7f3e5 na origem) e o corpo
+   claro do lápis. O token é o Papel do Mapa, `--cor-texto`. */
+.capa,
+.lapis {
+  fill: var(--cor-texto);
+}
+
+/* O cinza do desenho: as listras escritas nas capas, o aro do lápis e a sombra
+   que corre por baixo do corpo dele (#c6c8c2 na origem — o Concreto de
+   Painel). */
+.linhas,
+.aro,
+.lapisSombra {
+  fill: var(--cor-superficie);
+}
+
+/* A tinta escura do desenho: as bordas dos três livros e o contorno, o corpo e a
+   ponta do lápis (#231f20 na origem). O valor é literal, e não token, como no
+   `.contorno` do Controle: é a mesma tinta da referência. Sobre o fundo escuro da
+   página ele some; em cima do leito claro da trilha lê como tinta. */
+.borda,
+.contorno {
+  fill: #231f20;
+}

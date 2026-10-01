@@ -1,0 +1,17 @@
+/* SetaPequena — a seta pequena, em DUAS camadas como a `Seta` e a `Seta01`: as
+   duas formas são cheias e o relevo vem da sobreposição, não de traço. */
+
+/* A camada de trás, deslocada — no desenho do usuário era o #231f20. A cor é a
+   TINTA, e não a cor do fundo: a seta cai em cima do leito claro da trilha, e é
+   o contraste contra esse leito que faz a forma clara aparecer. */
+.relevo {
+  fill: #231f20;
+  stroke: none;
+}
+
+/* A camada da frente — no desenho era o #f7f3e5, que aqui é o Papel do Mapa, o
+   token `--cor-texto`. */
+.seta {
+  fill: var(--cor-texto);
+  stroke: none;
+}

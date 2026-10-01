@@ -1,0 +1,36 @@
+/* Janela do editor — peça de CHAPA: formas cheias, sem traço.
+   Cada classe é uma PARTE visível da janela, e o comentário de cada uma registra
+   a cor que o ícone de origem usava ali — é o mapa da tradução de paleta. */
+
+/* O corpo da janela, o miolo do ponto e o miolo do campo de endereço.
+   No ícone os três eram #FFFFFF. */
+.janela,
+.ponto,
+.campo {
+  fill: var(--cor-texto);
+  stroke: none;
+}
+
+/* A barra de título (era #E6E6E6). */
+.barra {
+  fill: var(--cor-superficie);
+  stroke: none;
+}
+
+/* O canto luminoso, dentro do corpo (era o neon #06F3FF). */
+.canto {
+  fill: var(--cor-superficie);
+  stroke: none;
+}
+
+/* A estrutura escura: a borda do ponto, a borda do campo de endereço, a moldura
+   da janela e o `</>`. No ícone os quatro eram #005BFF.
+   O valor é literal, e não token, igual ao `.relevo` da Seta: é a mesma tinta
+   da referência, que não está entre os tokens do `index.css`. */
+.pontoBorda,
+.campoBorda,
+.moldura,
+.codigo {
+  fill: #231f20;
+  stroke: none;
+}
