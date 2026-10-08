@@ -1,0 +1,40 @@
+/* Text08 — o trecho de TRILHA com o letreiro curvo: o leito cinza, o traço
+   tracejado por cima e a frase acompanhando a curva. Duas técnicas: o leito e a
+   frase são CHAPA e o traço é traço — e a frase não é texto vivo: veio do editor
+   já convertida em CONTORNO (path), então as letras seguem a curva como desenho,
+   não como tipografia.
+   As três partes vêm do arquivo de origem com as cores do projeto: o cinza do
+   leito é o Concreto de Painel e o do traço já era o Carvão do Traço. */
+
+/* O leito: a faixa larga por baixo do traço — no arquivo de origem era o cinza
+   #c6c8c2, que aqui é o Concreto de Painel, o token `--cor-superficie`.
+   O grupo dele no JSX ficou com a `matrix` de origem (é ela que deita e
+   encolhe o desenho na vertical); o que saiu foi o `stroke-width` do grupo, que
+   não pintava nada porque não havia `stroke` declarado. */
+.leito {
+  fill: var(--cor-superficie);
+}
+
+/* O traço da trilha: tracejado, de ponta arredondada, com 2 de espessura. No
+   arquivo de origem isso estava espalhado entre um `<g>` e um `style=` no path;
+   aqui está tudo na classe.
+   O `0 0 3 3` do tracejado é do arquivo: os dois primeiros zeros são um traço de
+   comprimento zero e um vão de comprimento zero, ou seja, o mesmo que `3 3`.
+   Guardado como veio. */
+.traco {
+  fill: none;
+  stroke: #231f20;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-dasharray: 0 0 3 3;
+}
+
+/* O letreiro: a frase em CONTORNO (path), seguindo a curva do leito. Só a tinta
+   entra aqui — o cinza #333333 do arquivo de origem vira a mesma tinta do resto
+   da referência, o Carvão do Traço. Repare que NÃO há `font-*` nenhum: a frase
+   não é texto, é desenho; corpo, `letter-spacing` e caixa-alta ficaram embutidos
+   nos contornos quando o editor converteu o texto. Para mudar a frase, re-exportar
+   do editor. */
+.letreiro {
+  fill: #231f20;
+}

@@ -1,0 +1,46 @@
+/* SimboloProgramacao — o selo hexagonal com `</>`, o símbolo da programação.
+   Peça MISTA: as duas chapas do selo são chapa (formas cheias, o relevo vindo do
+   deslocamento entre elas, como nas placas da `Text01`) e o `</>` é TEXTO vivo.
+   O arquivo de origem é irmão do das placas — mesma ideia, outro desenho —, por
+   isso as classes têm os mesmos nomes das de lá. */
+
+/* A placa de trás, deslocada para baixo/direita e um fio maior (é o `matrix` do
+   grupo dela que faz as duas coisas) — no arquivo de origem era o Carvão do
+   Traço #231f20. */
+.placaTras {
+  fill: #231f20;
+}
+
+/* A placa da frente — no arquivo de origem era o #f7f3e5, que aqui é o Papel do
+   Mapa, o token `--cor-texto`, com contorno de 1 do Carvão do Traço.
+   O contorno mora só nesta classe porque só a placa da frente o tem: a de trás
+   vinha com `stroke-width: 0` no arquivo de origem. */
+.placaFrente {
+  fill: var(--cor-texto);
+  stroke: #231f20;
+  stroke-width: 1;
+}
+
+/* O `</>`. No arquivo de origem é um `<text>` em Orbitron 16 com o cinza
+   #333333, que aqui vira a mesma tinta do resto da referência, o Carvão do
+   Traço, e vive dentro do grupo da placa — então ele acompanha a escala e a
+   posição do selo sem conta nenhuma.
+   O `<` e o `>` são `&lt;` e `&gt;` no arquivo: em JSX o símbolo tem de vir
+   entre chaves (`{"</>"}`), senão o parser lê como fragmento vazio. */
+.letreiro {
+  fill: #231f20;
+  font-family: var(--fonte-interface);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* O `{ }` do selo 02. No arquivo de origem é um `<text>` em ARIAL 19px — o único
+   texto das peças que não é Orbitron — com o Carvão do Traço #231f20. Ficou como
+   veio; trocar por `var(--fonte-interface)` é uma linha, se o símbolo destoar do
+   resto do tabuleiro. */
+.chaves {
+  fill: #231f20;
+  font-family: Arial;
+  font-size: 19px;
+  font-weight: 600;
+}

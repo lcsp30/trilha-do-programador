@@ -1,0 +1,43 @@
+/* Text09 — a placa DE PÉ com o letreiro "SOLUÇÕES", irmã da `Text03`
+   (ALGORITMO) e da `Text06` (PSEUDOCÓDIGO): é a mesma placa deitada da família
+   da `Text01`, girada ~93°, com o letreiro escrito de cima para baixo. */
+
+/* A chapa de TRÁS, em Carvão do Traço — o `#231f20` do arquivo de origem.
+   Como nas outras placas, é ela que dá o relevo: fica deslocada um fio em
+   relação à da frente, e é esse desencontro que se lê como espessura.
+   As duas chapas têm um giro próprio de ~0,3° no arquivo; o `transform` e o
+   `transformOrigin` delas vivem no JSX, porque sem a origem do giro a placa
+   inteira desliza. */
+.placaTras {
+  fill: #231f20;
+}
+
+/* A chapa da FRENTE: o `rgb(247, 243, 229)` do arquivo é o Papel do Mapa, o
+   token `--cor-texto`. O contorno de 1,23 NÃO está aqui — ele vive num `<g>` no
+   componente, em volta das duas chapas, como nas placas da `Text01`.
+
+   O giro de ~0,3° desta chapa é em torno do PRÓPRIO centro, e por isso as duas
+   linhas de baixo. Elas NÃO podem ir para o JSX: o React não conhece o atributo
+   `transformBox` — avisa no console e emite `transformbox`, que o navegador
+   ignora. Sem o `transform-box: fill-box`, o `50% 50%` do `transform-origin`
+   seria resolvido contra a viewport do SVG, e não contra a caixa da chapa: a
+   placa desliza uns 2,6 unidades. */
+.placaFrente {
+  fill: var(--cor-texto);
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+/* O letreiro. É TEXTO VIVO, uma `<tspan>` por letra, e trocar a palavra é mexer
+   no JSX. O `dy="1.2em"` de cada tspan é o avanço de uma linha — é ele que
+   empilha as letras de cima para baixo.
+   O `#333333` do arquivo de origem vira a mesma tinta do resto da referência,
+   o Carvão do Traço. */
+.letreiro {
+  fill: #231f20;
+  font-family: var(--fonte-interface);
+  font-size: 18px;
+  font-weight: 600;
+  text-anchor: middle;
+  white-space: 10px;
+}

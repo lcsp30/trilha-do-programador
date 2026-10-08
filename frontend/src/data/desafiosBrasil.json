@@ -1,0 +1,47 @@
+{
+    "1": {
+        "descricao": "Bem-vindo à Trilha do Programador!\n\n O seu primeiro programa em qualquer linguagem de programação normalmente é o \"Hello World!\". Neste primeiro problema, tudo o que você precisa fazer é imprimir esta mensagem na tela.",
+        "descricao_entrada": "Este desafio não possui entrada.",
+        "descricao_saida": "Imprima a mensagem \"Hello World\" exatamente como no exemplo.",
+        "exemplo_entrada": [],
+        "exemplo_saida": ["Olá Mundo!"],
+        "pais": "brasil",
+        "numero_desafio": "01"
+    },
+    "2": {
+        "descricao": "Em uma feira livre no Brasil, você comprou dois produtos e quer descobrir quanto pagará ao todo. Leia os dois valores e calcule a soma.",
+        "descricao_entrada": "A entrada contém dois números inteiros, representando os valores dos produtos.",
+        "descricao_saida": "Imprima o valor total da compra, que é a soma dos dois números.",
+        "exemplo_entrada": [2, 3],
+        "exemplo_saida": [5],
+        "pais": "brasil",
+        "numero_desafio": "02"
+    },
+    "3": {
+        "descricao": "Uma biblioteca comunitária recebeu alguns livros e depois emprestou uma parte deles. Descubra quantos livros ainda estão disponíveis fazendo uma subtração.",
+        "descricao_entrada": "A entrada contém dois números inteiros: a quantidade inicial de livros e a quantidade emprestada.",
+        "descricao_saida": "Imprima a quantidade de livros que permaneceu na biblioteca.",
+        "exemplo_entrada": [10, 4],
+        "exemplo_saida": [6],
+        "pais": "brasil",
+        "numero_desafio": "03"
+    },
+    "4": {
+        "descricao": "Para organizar uma festa junina, você precisa calcular quantos doces serão preparados. Cada mesa receberá a mesma quantidade de doces. Use uma multiplicação para descobrir o total.",
+        "descricao_entrada": "A entrada contém dois números inteiros: a quantidade de mesas e a quantidade de doces por mesa.",
+        "descricao_saida": "Imprima a quantidade total de doces da festa.",
+        "exemplo_entrada": [3, 4],
+        "exemplo_saida": [12],
+        "pais": "brasil",
+        "numero_desafio": "04"
+    },
+    "5": {
+        "descricao": "Em um passeio de ônibus pelo Brasil, um grupo de pessoas vai dividir igualmente o custo das passagens. Calcule quanto cabe a cada pessoa usando uma divisão inteira.",
+        "descricao_entrada": "A entrada contém dois números inteiros: o custo total das passagens e a quantidade de pessoas. A quantidade de pessoas será diferente de zero.",
+        "descricao_saida": "Imprima o valor que cada pessoa deverá pagar.",
+        "exemplo_entrada": [20, 5],
+        "exemplo_saida": [4],
+        "pais": "brasil",
+        "numero_desafio": "05"
+    }
+}

@@ -1,0 +1,38 @@
+/* Text07 — a placa com o letreiro "PORTUGUÊS - BR". Peça de CHAPA: as duas
+   formas da placa são cheias e o relevo vem do deslocamento entre elas, como nas
+   irmãs. O contorno de 1,23 e a cor dele ficam no componente, porque valem para
+   as duas placas.
+   O arquivo de origem é irmão do da `Text05` — as coordenadas das duas chapas
+   são IDÊNTICAS, só a palavra muda —, por isso as classes têm os mesmos nomes das
+   de lá. */
+
+/* A placa de trás, deslocada — no arquivo de origem era o Carvão do Traço
+   #231f20. */
+.placaTras {
+  fill: #231f20;
+}
+
+/* A placa da frente — no arquivo de origem era o #f7f3e5, que aqui é o Papel do
+   Mapa, o token `--cor-texto`. */
+.placaFrente {
+  fill: var(--cor-texto);
+}
+
+/* O letreiro. No arquivo de origem é um `<text>` em Orbitron 36,5427/600 com o
+   cinza #333333, que aqui vira a mesma tinta do resto da referência, o Carvão do
+   Traço. É o MESMO corpo das irmãs `Text04`/`Text05`; o `matrix` dele no JSX é
+   que muda um pouco, porque "PORTUGUÊS - BR" é mais longa.
+   `white-space: pre` é o que preserva o espaço antes do "P": sem ele o navegador
+   come o espaço inicial e o letreiro escorrega para a esquerda.
+   `transform-box` e `transform-origin` vêm do arquivo de origem e não são
+   enfeite: a `matrix` do `<text>` no JSX gira o bloco em torno DESTE ponto, não
+   da origem do tabuleiro. Não "consertar" esses dois números. */
+.letreiro {
+  fill: #231f20;
+  font-family: var(--fonte-interface);
+  font-size: 36.5427px;
+  font-weight: 600;
+  transform-box: fill-box;
+  transform-origin: 117.499px 29.6277px;
+  white-space: pre;
+}

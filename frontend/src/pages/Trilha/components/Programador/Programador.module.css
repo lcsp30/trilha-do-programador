@@ -1,0 +1,39 @@
+/* Programador — a pessoa encapuzada de óculos, atrás do notebook. Peça de
+   CHAPA: tudo é forma cheia.
+
+   A paleta do arquivo de origem é de ILUSTRAÇÃO (dois azuis, dois beges e um
+   cinza), e cada cor caiu num token do projeto. Este é o registro da tradução,
+   regra por regra:
+
+     #135370 (o azul escuro — as partes na sombra do capuz e dos ombros)
+       → `--cor-fundo`, o Petróleo Noturno
+     #1e608b (o azul médio — o alto do capuz e as costas dos ombros)
+       → `--cor-painel-escuro`, o Aço de Painel
+     #f7f3e5 (o bege claro — o rosto, os óculos e a tampa do notebook)
+       → `--cor-texto`, o Papel do Mapa
+     #c6c8c2 (o cinza — o corpo do notebook e a barra de baixo dele)
+       → `--cor-superficie`, o Concreto de Painel
+     #231f20 e #000000 (o contorno e a lente da câmera)
+       → `#231f20`, o Carvão do Traço (o preto puro não é da paleta)
+
+   O CIANO NÃO ENTRA: o `DESIGN.md` proíbe encher qualquer coisa com o Ciano
+   Sinalizador sem um estado por trás, e aqui não há estado nenhum. */
+.petroleo {
+  fill: var(--cor-fundo);
+}
+
+.aco {
+  fill: var(--cor-painel-escuro);
+}
+
+.papel {
+  fill: var(--cor-texto);
+}
+
+.concreto {
+  fill: var(--cor-superficie);
+}
+
+.carvao {
+  fill: #231f20;
+}

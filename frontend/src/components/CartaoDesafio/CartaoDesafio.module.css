@@ -1,0 +1,187 @@
+/* ===== APARÊNCIA DO CARD DE DESAFIO =====
+   Só o visual. Posição (top/left/right/bottom) vem das classes `slot`
+   passadas pela página — assim o mesmo card serve em qualquer vão da trilha.
+
+   O card é uma PLACA CLARA lida da esquerda para a direita: a chapa dos selos,
+   o texto e a seta de ação. A sombra sai de `--sombra` porque o desafio atual
+   já nasce com a dele (o deslocamento duro do sistema) e uma regra de hover
+   mais específica apagaria a dele. `transform` não entra aqui de propósito:
+   `.slot1` usa `translateX(-50%)` para se centrar e o card perderia o lugar. */
+
+.cartao {
+  align-items: center;
+  background: var(--cor-texto);
+  border: 1px solid var(--cor-borda-escura);
+  box-shadow: var(--sombra, 0 0 0 rgba(18, 30, 31, 0));
+  color: var(--cor-texto-escuro);
+  cursor: pointer;
+  display: flex;
+  gap: 0.8rem;
+  font: inherit;
+  min-height: 106px;
+  padding: 0.85rem 1rem;
+  text-align: left;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+  width: min(420px, 30%);
+  z-index: 2;
+}
+
+/* A chapa do selo: UM selo por card (o `</>` nos desafios ímpares, o `{ }` nos
+   pares — quem escolhe é o JSX). O fio de cabelo à direita separa a chapa da
+   coluna de texto, como nas outras placas do sistema. */
+.selo {
+  align-items: center;
+  align-self: stretch;
+  border-right: 1px solid rgba(18, 30, 31, 0.22);
+  display: flex;
+  flex: none;
+  padding-right: 0.8rem;
+}
+
+/* O selo é um `<g>` dentro de um `<svg>` com a caixa da peça (ver `CAIXA_SELO`
+   no .jsx: 109,1 × 117,6 unidades). O px aqui é quem dá o porte — mantendo a
+   proporção da caixa, senão o selo achata.
+   40px: médio para pequeno dentro dos 106px do card. Com 54px ele virava o
+   elemento mais pesado da placa, à frente do nome do desafio. */
+.seloSimbolo { display: block; height: 40px; width: 37.1px; }
+
+/* O Programador mora no CANTO INFERIOR DIREITO, em absoluto: como item de flex
+   ele custaria ~30px dos 267px do card e o nome do desafio quebraria em três
+   linhas. O card é o bloco de contenção porque a classe `slot` da página o põe
+   em `position: absolute` — contrato implícito que vale para toda chamada, que
+   sempre passa `slot`.
+   Caixa da peça: `CAIXA_PROGRAMADOR` no .jsx (95,9 × 103 unidades). 32px é o
+   porte de estampa: presente sem competir com o texto do card.
+   `pointer-events: none` porque é estampa: quem recebe o clique é o botão. */
+.programador {
+  bottom: 0.25rem;
+  display: block;
+  height: 32px;
+  pointer-events: none;
+  position: absolute;
+  right: 0.3rem;
+  width: 29.8px;
+}
+
+.texto {
+  align-items: flex-start;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.28rem;
+  min-width: 0;
+}
+
+.numero {
+  color: var(--cor-ciano-escura);
+  font-size: 0.55rem;
+  letter-spacing: 0.13em;
+}
+
+.nome {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* O status deixou de ser uma linha solta de texto e virou CHIP, como no
+   `CartaoNivel`: caixa alta com fundo tingido faz o estado ler de longe.
+   `nowrap` porque `Começar desafio` não pode partir em duas linhas dentro do
+   chip — o fundo tingido denuncia a quebra. */
+.status {
+  align-self: flex-start;
+  background: rgba(18, 30, 31, 0.1);
+  color: var(--cor-cinza-escura);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  padding: 0.2rem 0.45rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* card do lado direito: selo para a direita, texto e chip alinhados à direita e
+   — como o selo passa a ocupar o canto de baixo à direita — o Programador
+   atravessa junto, para o canto de baixo à esquerda, que é o único canto livre
+   dessa placa. */
+.invertido { flex-direction: row-reverse; text-align: right; }
+
+.invertido .selo {
+  border-left: 1px solid rgba(18, 30, 31, 0.22);
+  border-right: 0;
+  padding-left: 0.8rem;
+  padding-right: 0;
+}
+
+.invertido .texto { align-items: flex-end; }
+.invertido .status { align-self: flex-end; }
+
+.invertido .programador {
+  left: 0.3rem;
+  right: auto;
+}
+
+/* Estados no PRÓPRIO elemento — uma seção pode ter desafios de estados
+   diferentes, então não dá para herdar a cor do ancestral.
+
+   CONCLUÍDO: a placa lava no Ciano Soterrado (o tom do próprio estado) e a
+   borda continua nele. A lavagem é uma camada translúcida sobre o Papel de
+   Mapa, e não uma troca de fundo, para o selo e o Programador seguirem
+   legíveis — as duas peças desenham em creme e carvão e sumiriam num fundo
+   cheio. */
+.concluido {
+  background-color: var(--cor-texto);
+  background-image: linear-gradient(
+    rgba(22, 123, 123, 0.24),
+    rgba(22, 123, 123, 0.24)
+  );
+  border-color: var(--cor-ciano-escura);
+}
+
+/* O chip do concluído é PREENCHIDO, e não tingido como o do `CartaoNivel`: a
+   placa já está lavada no mesmo tom, e um chip tingido sobre a lavagem fica em
+   2,8:1 (medido). Cheio, o Papel de Mapa sobre o Ciano Soterrado dá 4,55:1. */
+.concluido .status {
+  background: var(--cor-ciano-escura);
+  color: var(--cor-texto);
+}
+
+.atual {
+  --sombra: 4px 4px 0 rgba(18, 30, 31, 0.2);
+  border-color: var(--cor-amarela);
+}
+
+.atual .status {
+  background: rgba(240, 201, 77, 0.28);
+  color: var(--cor-amarela-escura);
+}
+
+.bloqueado {
+  background: var(--cor-superficie-bloqueada);
+  color: var(--cor-cinza-escura);
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* No card bloqueado o selo recua para o segundo plano: quem tem de falar é o
+   aviso de bloqueio, não a estampa do desafio. */
+.bloqueado .selo,
+.bloqueado .programador { opacity: 0.55; }
+
+.bloqueado .numero { color: var(--cor-cinza-escura); }
+
+.bloqueado .status {
+  background: rgba(18, 30, 31, 0.08);
+  color: var(--cor-cinza-escura);
+}
+
+/* Hover e foco: o sistema responde com sombra de registro deslocado (sem
+   desfoque, como manda a chapa) e com borda ciano + anel no foco. */
+.cartao:hover:not(:disabled) {
+  --sombra: 4px 4px 0 rgba(18, 30, 31, 0.18);
+}
+
+.cartao:focus-visible {
+  border-color: var(--cor-ciano);
+  outline: 2px solid rgba(35, 226, 223, 0.35);
+  outline-offset: 2px;
+}

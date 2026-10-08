@@ -1,0 +1,19 @@
+/* Computador — o monitor com o `</>` na tela e uma engrenagem ao lado. Peça de
+   TINTA: todas as formas são cheias, sem traço nenhum — o desenho é a silhueta
+   delas.
+   No arquivo de origem isso era UMA classe (`.cls-2 { fill: #231f20 }`, o Carvão
+   do Traço) aplicada forma a forma; aqui cada PARTE tem a sua, para dar para
+   mexer numa sem mexer nas outras, e as quatro dividem a mesma regra.
+   O `<rect class="cls-1">` de 60 por 60 era `fill: none` — só a caixa do ícone
+   — e saiu. */
+
+/* O contorno do monitor com a base e o corpo da engrenagem. */
+.corpo,
+/* Os três pontos da janela. */
+.pontos,
+/* O `</>`: desenho, não texto — por isso não segue a fonte da interface. */
+.codigo,
+/* O miolo da engrenagem. */
+.engrenagem {
+  fill: #231f20;
+}

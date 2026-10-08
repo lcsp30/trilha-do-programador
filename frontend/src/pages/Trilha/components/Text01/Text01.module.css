@@ -1,0 +1,34 @@
+/* Text01 — a placa com o letreiro. Peça de CHAPA: as duas formas da placa são
+   cheias e o relevo vem do deslocamento entre elas, como na Seta. O contorno de
+   1,23 e a cor dele ficam no componente, porque valem para as duas placas. */
+
+/* A placa de trás, deslocada para baixo/direita — no arquivo de origem era o
+   Carvão do Traço #231f20. */
+.placaTras {
+  fill: #231f20;
+}
+
+/* A placa da frente — no arquivo de origem era o Papel do Mapa #f7f3e5. */
+.placaFrente {
+  fill: var(--cor-texto);
+}
+
+/* O letreiro: as duas linhas da placa. No arquivo de origem ele é um `<text>`
+   em Orbitron 28/600 — são as fontes do sistema que desenham as letras — e o
+   cinza #333333 de lá vira aqui a mesma tinta do resto da referência, o Carvão
+   do Traço. A Orbitron já vem do `index.css`.
+   `white-space: pre` é o que preserva os CINCO espaços antes de "DIVIRTA-SE":
+   sem ele o navegador come os espaços iniciais e o letreiro escorrega para a
+   esquerda dentro da placa.
+   `transform-box` e `transform-origin` também vêm de lá e não são enfeite: a
+   `matrix` do `<text>` no JSX girá o bloco em torno DESTE ponto, não da origem
+   do tabuleiro. Tirando os dois, o letreiro sai da placa. */
+.letreiro {
+  fill: #231f20;
+  font-family: var(--fonte-interface);
+  font-size: 28px;
+  font-weight: 600;
+  transform-box: fill-box;
+  transform-origin: 117.499px 29.6277px;
+  white-space: pre;
+}

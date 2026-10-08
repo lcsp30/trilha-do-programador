@@ -1,0 +1,14 @@
+/* Lampada02 — a lâmpada de UMA cor. A `Lampada01`, no mesmo arquivo, tem as
+   cores INLINE porque são umas trinta formas em duas tintas; aqui é um valor só,
+   então ele sai por classe, como manda o projeto.
+
+   A tinta é o Carvão do Traço, o mesmo `#231f20` do resto da referência. No
+   arquivo de origem quem pintava era o `fill="#000000"` do `<svg>` — que saiu
+   junto com a casca (preto puro não é da paleta).
+
+   O `fill` mora no grupo de fora e os paths herdam, porque nenhum deles declara
+   cor própria. Se um dia os raios precisarem de outra cor, eles já estão em
+   grupos separados no JSX — basta dar a eles uma classe própria. */
+.lampada {
+  fill: #231f20;
+}

@@ -1,0 +1,36 @@
+/* Text03 — a placa DE PÉ, com o letreiro "ALGORITMO" escrito de cima para baixo.
+   Peça de CHAPA: as duas formas da placa são cheias e o relevo vem do
+   deslocamento entre elas, como na Seta e nas placas da Text01/Text04. O
+   contorno de 1,23 fica no componente, porque vale para as duas placas.
+   O arquivo de origem é irmão do da `Text04` — MESMA placa, girada —, por isso
+   as classes têm os mesmos nomes das de lá. */
+
+/* A placa de trás, deslocada — no arquivo de origem era o Carvão do Traço
+   #231f20. */
+.placaTras {
+  fill: #231f20;
+}
+
+/* A placa da frente — no arquivo de origem era o #f7f3e5, que aqui é o Papel do
+   Mapa, o token `--cor-texto`. */
+.placaFrente {
+  fill: var(--cor-texto);
+}
+
+/* O letreiro. Diferente do da `Text01`, ele NÃO é contorno vetorial: são nove
+   `<tspan>`, uma letra cada, em Orbitron 18/600 com `text-anchor: middle` — dá
+   para trocar a palavra sem abrir editor vetorial. O cinza #333333 do arquivo
+   de origem vira a mesma tinta do resto da referência, o Carvão do Traço.
+   `white-space: pre` vem de lá e é seguro: o JSX APAGA o espaço em branco entre
+   as `tspan` (o que contém quebra de linha some), então o `dy="1em"` de cada
+   linha continua sendo o único avanço vertical. NÃO juntar as `tspan` com texto
+   solto na mesma linha de código: aí o `pre` vira quebra de linha de verdade e
+   dobra o espaçamento entre as letras. */
+.letreiro {
+  fill: #231f20;
+  font-family: var(--fonte-interface);
+  font-size: 18px;
+  font-weight: 600;
+  text-anchor: middle;
+  white-space: pre;
+}

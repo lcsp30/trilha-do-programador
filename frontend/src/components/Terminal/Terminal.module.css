@@ -1,0 +1,36 @@
+/* O container só dimensiona o xterm: o visual (cores, fonte, cursor) vem das
+   opções passadas ao Terminal no JSX. */
+.container {
+  height: 100%;
+  width: 100%;
+}
+
+/* O FitAddon mede o tamanho pelo elemento pai do xterm, então quem precisa ter
+   altura definida é esta tela. */
+.tela {
+  height: 100%;
+  width: 100%;
+}
+
+/* O xterm esconde a barra de rolagem quando ociosa (as classes `invisible`/`fade`
+   vêm do CSS dele, inspirado no VS Code). Quando a saída passou do que cabe na tela
+   — que é justamente quando a barra passa a ter o que rolar — ela fica visível: é a
+   única pista de que o começo da saída está acima. O seletor tem 4 classes para
+   vencer o `.xterm .xterm-scrollable-element > .invisible` (3); sem o
+   `pointer-events`, arrastar o slider não funcionaria. */
+.container.comHistorico :global(.xterm-scrollable-element > .scrollbar) {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* A voz JetBrains Mono tem de ser declarada em CADA elemento do xterm — e não só
+   no container: o `* { font-family: var(--fonte-interface) }` do index.css é
+   declarado em TODO elemento e vence a herança. Quem quebra o terminal é o
+   `.xterm-char-measure-element`, o elemento invisível onde o xterm mede a largura
+   do caractere: medindo com a métrica da Orbitron, cada letra sai com o
+   espaçamento errado na tela.
+   O seletor de descendente (0,2,0) ganha do `*` (0,0,0). */
+.container :global(.xterm),
+.container :global(.xterm *) {
+  font-family: 'JetBrains Mono', monospace;
+}

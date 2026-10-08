@@ -1,0 +1,30 @@
+/* Teclado — peça MISTA: as teclas e o corpo são CHAPA (formas cheias) e o
+   contorno de espessura 2 vem por cima em formas SEPARADAS — é assim no arquivo
+   de origem (export do Sketch), que desenha cada forma duas vezes, uma só com
+   `fill` e outra só com `stroke`, com os MESMOS `points`. Aqui as duas ganharam
+   classe: a de `fill` pinta a chapa, a de `stroke` desenha o contorno. */
+
+/* O corpo do teclado — no arquivo de origem era o creme #f7f3e5, que é o Papel
+   do Mapa, o token `--cor-texto`. */
+.corpo {
+  fill: var(--cor-texto);
+}
+
+/* As quinze teclas — no arquivo de origem eram o cinza #c6c8c2, o Concreto de
+   Painel. */
+.teclas {
+  fill: var(--cor-superficie);
+}
+
+/* O contorno de tudo (as formas `Stroke-NNN` da origem) e o fio que sai de trás
+   do teclado, que é só traço. O #231f20 é literal, e não token, como no
+   `.contorno` do Controle e no `.borda` das placas: é a mesma tinta da
+   referência. */
+.contorno,
+.fio {
+  fill: none;
+  stroke: #231f20;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

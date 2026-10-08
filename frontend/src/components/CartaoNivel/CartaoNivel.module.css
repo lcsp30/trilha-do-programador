@@ -1,0 +1,164 @@
+/* ===== APARÊNCIA DO CARD DE NÍVEL =====
+   Componente independente: não compartilha base nem CSS com o CartaoDesafio,
+   mesmo vestindo o mesmo material. A única coisa que a página decide é a onda
+   do carrossel, através da prop `deslocado`.
+
+   O card é um <button>, então todo o conteúdo interno usa elementos de
+   phrasing content (span/strong/img/svg) — por isso os `display` explícitos. */
+
+.cartao {
+  background-color: var(--cor-superficie);
+  border: 1px solid rgba(18, 30, 31, 0.8);
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.35);
+  color: var(--cor-texto-escuro);
+  cursor: pointer;
+  display: flex;
+  flex: 0 0 clamp(220px, 24vw, 285px);
+  flex-direction: column;
+  font-family: var(--fonte-interface);
+  margin: 0;
+  min-height: 255px;
+  padding: 1.25rem;
+  position: relative;
+  scroll-snap-align: start;
+  text-align: left;
+  transform: translateY(var(--ondulacao, 0px));
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  width: clamp(220px, 24vw, 285px);
+}
+
+/* Onda do carrossel. O card decide o próprio deslocamento e a página só diz se
+   ele é par ou ímpar. A var NÃO tem valor base no `.cartao` — ela só existe
+   aqui, e lá é lida com fallback 0px. Sem valor base não há disputa de
+   especificidade entre `.cartao` e `.deslocado`. */
+.deslocado {
+  --ondulacao: 28px;
+}
+
+.cartao:not(.bloqueado):hover {
+  box-shadow: 5px 5px 0 rgba(20, 28, 28, 0.25);
+  transform: translateY(calc(var(--ondulacao, 0px) - 3px));
+}
+
+.cartao:focus-visible {
+  border-color: var(--cor-ciano);
+  box-shadow: 0 0 0 2px rgba(35, 226, 223, 0.35);
+  outline: none;
+}
+
+.cardTopo,
+.cardInfo {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pais {
+  color: var(--cor-cinza-escura);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.bandeira {
+  border: 1px solid rgba(18, 30, 31, 0.35);
+  display: block;
+  height: 28px;
+  object-fit: cover;
+  width: 42px;
+}
+
+.cadeado {
+  color: var(--cor-cinza-escura);
+  font-size: 1rem;
+}
+
+.titulo {
+  display: block;
+  font-size: clamp(1.05rem, 2vw, 1.4rem);
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  line-height: 1.3;
+  margin: 2.5rem 0 0;
+}
+
+.cardRodape {
+  display: block;
+  margin-top: auto;
+}
+
+.progressoLinha {
+  background: rgba(18, 30, 31, 0.16);
+  display: block;
+  height: 4px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.progressoLinha span {
+  background: var(--cor-ciano-escura);
+  display: block;
+  height: 100%;
+}
+
+.cardInfo {
+  color: var(--cor-cinza-escura);
+  font-size: 0.7rem;
+  letter-spacing: 0.025em;
+  margin-top: 0.65rem;
+}
+
+.cardInfo svg {
+  color: var(--cor-ciano-escura);
+  font-size: 1.05rem;
+}
+
+.status {
+  background: rgba(18, 30, 31, 0.1);
+  color: var(--cor-cinza-escura);
+  display: block;
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  margin-top: 1rem;
+  padding: 0.35rem 0.5rem;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.concluido .status {
+  background: rgba(35, 139, 112, 0.16);
+  color: var(--cor-ciano-escura);
+}
+
+.andamento {
+  border-color: var(--cor-amarela);
+}
+
+.andamento .status {
+  background: rgba(240, 201, 77, 0.28);
+  color: var(--cor-amarela-escura);
+}
+
+.andamento .progressoLinha span {
+  background: var(--cor-amarela-escura);
+}
+
+.bloqueado {
+  background-color: var(--cor-superficie-bloqueada);
+  color: var(--cor-cinza-escura);
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.bloqueado .pais,
+.bloqueado .cardInfo,
+.bloqueado .status {
+  color: var(--cor-cinza-escura);
+}
+
+@media (max-width: 700px) {
+  .cartao {
+    flex: 0 0 230px;
+    width: 230px;
+  }
+}
