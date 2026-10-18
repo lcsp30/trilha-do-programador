@@ -64,6 +64,7 @@
   letter-spacing: 0.15em;
   margin: 0 0 0.65rem;
   text-transform: uppercase;
+  font-weight: 600;
 }
 
 .identidadeNivel h1 {
@@ -76,9 +77,10 @@
 .identidadeNivel p:last-child {
   color: var(--cor-suave);
   font-size: 0.76rem;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.1em;
   line-height: 1.6;
   margin: 0;
+  font-weight: 500;
 }
 
 .progressoResumo {
@@ -92,7 +94,8 @@
   color: var(--cor-suave);
   display: block;
   font-size: 0.6rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
+  font-weight: 600;
 }
 
 .progressoResumo strong {
@@ -115,7 +118,9 @@
   height: 100%;
 }
 
-.progressoResumo small { font-size: 0.55rem; }
+/* .progressoResumo small { 
+  font-size: 0.55rem; 
+} */
 
 .tituloSecao {
   align-items: end;

@@ -55,17 +55,17 @@ function CartaoNivel({ nivel, onAbrir, deslocado = false }) {
         {bloqueado && <AiOutlineLock className={estilo.cadeado} aria-hidden="true" />}
       </span>
 
-      <strong className={estilo.titulo}>Desafios {nivel.pais}</strong>
+      <strong className={estilo.titulo}>{nivel.pais}</strong>
 
       <span className={estilo.cardRodape}>
         {/* A barra é só reforço visual: a porcentagem já vai no aria-label
             do botão e no texto ao lado, então não precisa ser anunciada. */}
         <span className={estilo.progressoLinha} aria-hidden="true">
-          <span style={{ width: `${nivel.progresso}%` }} />
+          <span style={{ width: `${nivel.progresso * 10}%` }} />
         </span>
         <span className={estilo.cardInfo}>
           <span>
-            {nivel.progresso}% · {nivel.desafios} desafios
+            {nivel.progresso * 10}% · {nivel.desafios} desafios
           </span>
           {!bloqueado && <AiOutlineArrowRight aria-hidden="true" />}
         </span>

@@ -6,18 +6,11 @@ import estilo from "./Niveis.module.css";
 
 const niveis = [
   {
-    pais: "Brasil",
-    bandeira: "br",
-    desafios: 10,
-    progresso: 100,
-    status: "concluido",
-  },
-  {
     pais: "Japão",
     bandeira: "jp",
     desafios: 10,
-    progresso: 60,
-    status: "andamento",
+    progresso: 0,
+    status: "bloqueado",
   },
   {
     pais: "Egito",
@@ -81,6 +74,24 @@ function Niveis() {
   const carrosselRef = useRef(null);
   const [arrastando, setArrastando] = useState(false);
   const inicioArraste = useRef({ x: 0, scrollLeft: 0 });
+  const dados = localStorage.getItem("desafios");
+  const dadosDesafio = JSON.parse(dados);
+
+  const concluidos = dadosDesafio.filter(
+    (desafio) => desafio.status === "concluido",
+  ).length;
+
+  const niveisExibidos = [
+    {
+      pais: "Brasil",
+      bandeira: "br",
+      desafios: 10,
+      progresso: concluidos,
+      status: "andamento",
+    },
+    ...niveis,
+  ];
+
   // Sem esta trava, soltar o ponteiro depois de arrastar conta como clique e
   // abre a trilha sem querer.
   const arrastou = useRef(false);
@@ -99,13 +110,6 @@ function Niveis() {
     setArrastando(false);
   }
 
-  // Enquanto o arraste está ativo quem escuta é a JANELA, não o carrossel.
-  //
-  // Aqui NÃO se usa setPointerCapture. Capturar o ponteiro no carrossel reescreve
-  // o alvo do `pointerup` para o carrossel, e aí o navegador dispara o `click` no
-  // ancestral comum dos dois alvos — o próprio carrossel. O card nunca recebe
-  // clique nenhum e o `onAbrir` não roda: nenhum nível abria. Escutando a janela
-  // o arraste sobrevive a sair da faixa e o clique continua chegando no botão.
   useEffect(() => {
     if (!arrastando) return;
 
@@ -143,51 +147,56 @@ function Niveis() {
 
       <div className={estilo.containerMain}>
         <main className={estilo.conteudo}>
-        <section className={estilo.boasVindas}>
-          <p className={estilo.sobrancelha}>MAPA DE APRENDIZADO</p>
-          <h1>Bem-vindo, Luiz.</h1>
-          <p>Escolha seu próximo território e continue construindo seu raciocínio.</p>
-        </section>
+          <section className={estilo.boasVindas}>
+            <p className={estilo.sobrancelha}>MAPA DE APRENDIZADO</p>
+            <h1>Bem-vindo</h1>
+            <p>
+              Escolha seu próximo território e continue construindo seu
+              raciocínio.
+            </p>
+          </section>
 
-        <section className={estilo.metricas} aria-label="Resumo da jornada">
-          <article className={estilo.metrica}>
-            <span className={estilo.metricaRotulo}>DESAFIOS RESTANTES</span>
-            <strong>88</strong>
-            <span className={estilo.metricaDetalhe}>de 100 desafios na jornada</span>
-          </article>
-          <article className={estilo.metrica}>
+          <section className={estilo.metricas} aria-label="Resumo da jornada">
+            <article className={estilo.metrica}>
+              <span className={estilo.metricaRotulo}>DESAFIOS CONCLUÍDOS</span>
+              <strong>{concluidos}</strong>
+              <span className={estilo.metricaDetalhe}>
+                de 100 desafios na jornada
+              </span>
+            </article>
+            {/* <article className={estilo.metrica}>
             <span className={estilo.metricaRotulo}>TEMPO MÉDIO</span>
             <strong>08 min</strong>
             <span className={estilo.metricaDetalhe}>para resolver cada desafio</span>
-          </article>
-        </section>
+          </article> */}
+          </section>
 
-        <section className={estilo.secaoNiveis}>
-          <div className={estilo.tituloSecao}>
-            <div>
-              <p className={estilo.sobrancelha}>PONTOS DA JORNADA</p>
-              <h2>Escolha um território</h2>
+          <section className={estilo.secaoNiveis}>
+            <div className={estilo.tituloSecao}>
+              <div>
+                <p className={estilo.sobrancelha}>PONTOS DA JORNADA</p>
+                <h2>Escolha um território</h2>
+              </div>
+              <span className={estilo.contagem}>10 territórios</span>
             </div>
-            <span className={estilo.contagem}>10 territórios</span>
-          </div>
 
-          <div
-            className={`${estilo.carrossel} ${arrastando ? estilo.arrastando : ""}`}
-            ref={carrosselRef}
-            onPointerDown={iniciarArraste}
-            onPointerUp={encerrarArraste}
-            onPointerCancel={encerrarArraste}
-          >
-            {niveis.map((item, indice) => (
-              <CartaoNivel
-                key={item.pais}
-                nivel={item}
-                onAbrir={abrirNivel}
-                deslocado={indice % 2 !== 0}
-              />
-            ))}
-          </div>
-        </section>
+            <div
+              className={`${estilo.carrossel} ${arrastando ? estilo.arrastando : ""}`}
+              ref={carrosselRef}
+              onPointerDown={iniciarArraste}
+              onPointerUp={encerrarArraste}
+              onPointerCancel={encerrarArraste}
+            >
+              {niveisExibidos.map((item, indice) => (
+                <CartaoNivel
+                  key={item.pais}
+                  nivel={item}
+                  onAbrir={abrirNivel}
+                  deslocado={indice % 2 !== 0}
+                />
+              ))}
+            </div>
+          </section>
         </main>
       </div>
     </div>

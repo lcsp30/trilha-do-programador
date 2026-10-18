@@ -12,7 +12,6 @@ const DIMENSAO_MINIMA = 1;
 const DIMENSAO_MAXIMA = 500;
 
 function normalizarDimensao(valor, padrao) {
-
     const numero = Number.parseInt(valor, 10);
 
     if (!Number.isFinite(numero)) return padrao;

@@ -32,19 +32,20 @@ import Mouse from "./components/Mouse/Mouse";
 import Globo from "./components/Globo/Globo";
 import Foguete from "./components/Foguete/Foguete";
 import estilo from "./Trilha.module.css";
+import { useEffect, useState } from "react";
 
-const desafios = [
-  { numero: 1, nome: "A primeira instrução", status: "concluido" },
-  { numero: 2, nome: "Mostrando uma mensagem", status: "concluido" },
-  { numero: 3, nome: "Seu primeiro desafio", status: "atual" },
-  { numero: 4, nome: "Guardando uma ideia", status: "bloqueado" },
-  { numero: 5, nome: "Perguntando ao usuário", status: "bloqueado" },
-  { numero: 6, nome: "Organizando valores", status: "bloqueado" },
-  { numero: 7, nome: "Tomando uma decisão", status: "bloqueado" },
-  { numero: 8, nome: "Repetindo uma tarefa", status: "bloqueado" },
-  { numero: 9, nome: "Juntando as ideias", status: "bloqueado" },
-  { numero: 10, nome: "Primeira missão completa", status: "bloqueado" },
-];
+// const desafios = [
+//   { numero: 1, nome: "A primeira instrução", status: "atual" },
+//   { numero: 2, nome: "Mostrando uma mensagem", status: "bloqueado" },
+//   { numero: 3, nome: "Seu primeiro desafio", status: "bloqueado" },
+//   { numero: 4, nome: "Guardando uma ideia", status: "bloqueado" },
+//   { numero: 5, nome: "Perguntando ao usuário", status: "bloqueado" },
+//   { numero: 6, nome: "Organizando valores", status: "bloqueado" },
+//   { numero: 7, nome: "Tomando uma decisão", status: "bloqueado" },
+//   { numero: 8, nome: "Repetindo uma tarefa", status: "bloqueado" },
+//   { numero: 9, nome: "Juntando as ideias", status: "bloqueado" },
+//   { numero: 10, nome: "Primeira missão completa", status: "bloqueado" },
+// ];
 
 const territorios = {
   brasil: {
@@ -136,9 +137,15 @@ function Trilha() {
   const { pais = "brasil" } = useParams();
   const navigate = useNavigate();
   const territorio = territorios[pais] || territorios.brasil;
+  const [desafios, setDesafios] = useState(() =>{
+    const dados = localStorage.getItem("desafios");
+    return JSON.parse(dados);
+  });
+
   const concluidos = desafios.filter(
     (desafio) => desafio.status === "concluido",
   ).length;
+  
   const progresso = Math.round((concluidos / desafios.length) * 100);
 
   function abrirDesafio(desafio) {
@@ -174,9 +181,6 @@ function Trilha() {
               >
                 <span style={{ width: `${progresso}%` }} />
               </div>
-              <small>
-                {concluidos} de {desafios.length} desafios concluídos
-              </small>
             </div>
           </div>
 

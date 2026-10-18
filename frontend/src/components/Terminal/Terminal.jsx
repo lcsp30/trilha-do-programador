@@ -24,7 +24,7 @@ const AVISO_DESCONECTADO =
 
 /* Expõe para o editor o que ele precisa: rodar o código do CodeMirror e encerrar a
    execução — as duas mensagens do protocolo que partem do usuário. */
-function TerminalComponent({ ref }) {
+function TerminalComponent({ ref, setExecutando}) {
 
     const telaRef = useRef(null);
     const terminalInstance = useRef(null);
@@ -115,9 +115,9 @@ function TerminalComponent({ ref }) {
 
     /* Programa terminou: sem digitação e sem conexão */
     const encerrarTerminal = useCallback(() => {
-
         desabilitarEntrada();
         fecharConexao();
+        setExecutando(false);
         
     }, [desabilitarEntrada, fecharConexao]);
 
@@ -125,6 +125,7 @@ function TerminalComponent({ ref }) {
        Fica num lugar só porque a execução pode partir daqui (conexão já aberta) ou do
        `despacharPendente` (conexão ou terminal recém-prontos). */
     const iniciarExecucao = useCallback(({ code, esperaEntrada }) => {
+        setExecutando(true);
 
         const terminal = terminalInstance.current;
 
@@ -189,6 +190,7 @@ function TerminalComponent({ ref }) {
 
                 case "error":
                     terminalInstance.current?.write(`\x1b[33m${mensagem.data}\x1b[0m\r\n`);
+                    console.log(mensagem.data);
 
                     // Um erro ao iniciar a execução é o fim dela: sem isso o terminal
                     // ficava habilitado, com cursor, sem processo nenhum do outro lado
@@ -198,12 +200,9 @@ function TerminalComponent({ ref }) {
                 // Código positivo é erro de verdade: o Ctrl+C (e o kill) devolve
                 // código negativo, e avisar ali só confundiria.
                 case "exit":
-
-                    if (mensagem.code > 0) {
                         terminalInstance.current?.write(
-                            `\x1b[33mO programa terminou com erro (código ${mensagem.code}).\x1b[0m\r\n`
+                            `\x1b[33mO programa terminou com erro.\x1b[0m\r\n`
                         );
-                    }
 
                     // Acabou o programa: o terminal fecha junto
                     encerrarTerminal();
@@ -213,7 +212,10 @@ function TerminalComponent({ ref }) {
 
         // Backend fora do ar: avisa no terminal e para por aqui, quem manda tentar
         // de novo é o próximo clique em Executar
-        socket.onerror = avisarDesconectado;
+        socket.onerror = () => {
+  avisarDesconectado();
+  setExecutando(false);
+};
 
         socket.onclose = () => {
 
@@ -224,6 +226,7 @@ function TerminalComponent({ ref }) {
 
             // Sem conexão, o terminal volta a não aceitar digitação
             desabilitarEntrada();
+            setExecutando(false);
         };
 
     }, [atualizarHistorico, avisarDesconectado, despacharPendente, desabilitarEntrada, encerrarTerminal]);

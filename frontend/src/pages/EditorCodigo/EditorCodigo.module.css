@@ -44,9 +44,50 @@
   outline: none;
 }
 
+.btnExecutar:disabled {
+  opacity: 0.5;                  /* Deixa o botão semi-transparente */
+  background-color: #cccccc;     /* Opcional: muda o fundo para cinza */
+  cursor: not-allowed;           /* Mostra o ícone de 'bloqueado' no mouse */
+  border-color: rgba(18, 30, 31, 0.2);
+}
+
 .btnIcon {
   font-size: 0.9rem;
 }
+
+.acoesResultado {
+  align-items: center;
+  display: flex;
+  gap: 0.45rem;
+}
+
+.btnParar {
+  align-items: center;
+  background-color: #b83f4f;
+  border: 1px solid #e36a78;
+  color: var(--cor-texto);
+  cursor: pointer;
+  display: flex;
+  font-family: var(--fonte-interface);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  padding: 0.4rem 0.75rem;
+  text-transform: uppercase;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.btnParar:hover {
+  background-color: #d65363;
+  border-color: #f18a96;
+}
+
+.btnParar:focus-visible {
+  border-color: var(--cor-ciano);
+  box-shadow: 0 0 0 2px rgba(35, 226, 223, 0.35);
+  outline: none;
+}
+
 
 .modalOverlay {
   align-items: center;

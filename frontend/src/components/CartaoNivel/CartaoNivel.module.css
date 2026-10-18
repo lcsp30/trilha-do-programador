@@ -7,7 +7,7 @@
    phrasing content (span/strong/img/svg) — por isso os `display` explícitos. */
 
 .cartao {
-  background-color: var(--cor-superficie);
+  background-color: var(--cor-texto);
   border: 1px solid rgba(18, 30, 31, 0.8);
   box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.35);
   color: var(--cor-texto-escuro);
@@ -104,8 +104,9 @@
 .cardInfo {
   color: var(--cor-cinza-escura);
   font-size: 0.7rem;
-  letter-spacing: 0.025em;
+  letter-spacing: 0.1em;
   margin-top: 0.65rem;
+  font-weight: 600;
 }
 
 .cardInfo svg {
@@ -118,8 +119,9 @@
   color: var(--cor-cinza-escura);
   display: block;
   font-size: 0.66rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   margin-top: 1rem;
+  font-weight: 600;
   padding: 0.35rem 0.5rem;
   text-transform: uppercase;
   width: fit-content;

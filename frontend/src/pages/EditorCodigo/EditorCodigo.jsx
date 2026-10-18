@@ -5,7 +5,7 @@ import { useState, useCallback, useRef, useEffect } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import TerminalComponent from "../../components/Terminal/Terminal";
 import api from "../../utils/api";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import dados from "../../data/desafiosBrasil.json"
 
 import {
@@ -13,14 +13,13 @@ import {
   AiOutlineFileText,
   AiOutlineConsoleSql,
   AiOutlineCode,
-  AiOutlineFlag,
   AiOutlineCheckCircle,
   AiOutlineCloseCircle,
   AiOutlineLoading3Quarters,
 } from "react-icons/ai";
 
 const EXTENSOES_EDITOR = [javascript()];
-const CODIGO_INICIAL = `mostrar('Bem Vindo!');`;
+const CODIGO_INICIAL = `mostrar("Bem Vindo!");`;
 
 function EditorCodigo() {
   let [code, setCode] = useState(CODIGO_INICIAL);
@@ -33,8 +32,8 @@ function EditorCodigo() {
   const[exemplo_saida, setExemplo_saida] = useState([]);
   const[pais, setPais] = useState("");
   const [feedback, setFeedback] = useState(null);
-
-
+  const [executando, setExecutando] = useState(false);
+  const nav = useNavigate();
 
   useEffect(() => {
   const desafioAtual = dados[desafio.numero];
@@ -66,6 +65,26 @@ function EditorCodigo() {
         pais: pais,
         numero_desafio: desafio.numero
       }).then((res) => {
+
+        if(res.data.res === true){
+          const d = localStorage.getItem("desafios");
+          const ds = JSON.parse(d);
+
+         const dadosDesafio = ds.map((des) => {
+          if(des.numero === desafio.numero){
+            return {...des, status: "concluido"};
+          }
+
+          if(des.numero === desafio.numero + 1){
+            return {...des, status: "atual"} 
+          }
+        
+          return des;
+        });
+        
+          localStorage.setItem("desafios", JSON.stringify(dadosDesafio));
+        }
+
         
     const timer = setTimeout(() => {
        setFeedback(res.data.res === true ? "sucesso" : "erro");
@@ -84,6 +103,9 @@ function EditorCodigo() {
 
   function fecharFeedback() {
     if (feedback !== "validando") {
+      if(feedback === "sucesso"){
+        nav("/trilha/brasil");
+      }
       setFeedback(null);
     }
   }
@@ -202,13 +224,30 @@ function EditorCodigo() {
               <AiOutlineConsoleSql className={estilo.resultadoTabIcon} />
               <span>Saída</span>
             </div>
-            <button className={estilo.btnExecutar} onClick={executarCodigo}>
-              <AiOutlinePlayCircle className={estilo.btnIcon} />
-              Executar
-            </button>
+            <div className={estilo.acoesResultado}>
+              {executando && (
+                <button
+                  type="button"
+                  className={estilo.btnParar}
+                  onClick={() => terminalRef.current?.encerrar()}
+                >
+                  Parar
+                </button>
+              )}
+              <button
+                type="button"
+                className={estilo.btnExecutar}
+                onClick={executarCodigo}
+                disabled={executando}
+              >
+                <AiOutlinePlayCircle className={estilo.btnIcon} />
+                Executar
+              </button>
+            </div>
+           
           </div>
           <div className={estilo.resultadoBody}>
-            <TerminalComponent ref={terminalRef} />
+            <TerminalComponent ref={terminalRef} setExecutando={setExecutando}/>
           </div>
         </div>
       </div>

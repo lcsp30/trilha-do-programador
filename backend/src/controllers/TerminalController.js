@@ -1,9 +1,10 @@
 import { criarTerminal } from "../services/TerminalService.js";
 import { ErroDeTraducao } from "../utils/logicaTraducao.js";
+import { mensagemDeErro } from "../utils/mensagensDeErro.js";
 
 function ocultarCaminhoTemporario(data) {
 
-    return data.replace(/\/programa\.js/g, "codigo-do-aluno");
+    return data.replaceAll("file:///C:/Projetos%20React/trilha-do-programador/backend/", "");
 }
 
 /* Uma conexão de WebSocket é uma sessão de terminal: ela roda uma execução por
@@ -47,7 +48,7 @@ export default function conectarTerminal(ws) {
 
                 onData: (data) => {
                     if (daExecucaoAtual()) {
-                        enviar({ type: "output", data: ocultarCaminhoTemporario(data) });
+                        enviar({ type: "output", data:  ocultarCaminhoTemporario(data)});
                     }
                 },
 

@@ -1,8 +1,8 @@
 {
     "1": {
-        "descricao": "Bem-vindo à Trilha do Programador!\n\n O seu primeiro programa em qualquer linguagem de programação normalmente é o \"Hello World!\". Neste primeiro problema, tudo o que você precisa fazer é imprimir esta mensagem na tela.",
+        "descricao": "Bem-vindo à Trilha do Programador!\n\n O seu primeiro programa em qualquer linguagem de programação normalmente é o \"Olá Mundo!\". Neste primeiro problema, tudo o que você precisa fazer é imprimir esta mensagem na tela.",
         "descricao_entrada": "Este desafio não possui entrada.",
-        "descricao_saida": "Imprima a mensagem \"Hello World\" exatamente como no exemplo.",
+        "descricao_saida": "Imprima a mensagem \"Olá Mundo!\" exatamente como no exemplo.",
         "exemplo_entrada": [],
         "exemplo_saida": ["Olá Mundo!"],
         "pais": "brasil",
@@ -43,5 +43,50 @@
         "exemplo_saida": [4],
         "pais": "brasil",
         "numero_desafio": "05"
+    },
+    "6": {
+        "descricao": "Uma professora quer calcular a média aritmética de três notas de um aluno. Calcule a média das notas informadas.",
+        "descricao_entrada": "A entrada contém três números inteiros, representando as notas do aluno.",
+        "descricao_saida": "Imprima a média aritmética das três notas.",
+        "exemplo_entrada": [6, 8, 10],
+        "exemplo_saida": [8],
+        "pais": "brasil",
+        "numero_desafio": "06"
+    },
+    "7": {
+        "descricao": "Calcule a área de um círculo a partir do seu raio. Para este desafio, use pi = 3.14 e a fórmula pi * raio ** 2.",
+        "descricao_entrada": "A entrada contém um número inteiro representando o raio do círculo.",
+        "descricao_saida": "Imprima a área do círculo usando pi = 3.14.",
+        "exemplo_entrada": [2],
+        "exemplo_saida": [12.56],
+        "pais": "brasil",
+        "numero_desafio": "07"
+    },
+    "8": {
+        "descricao": "Calcule a área de um triângulo a partir da sua base e da sua altura. Use a fórmula base * altura / 2.",
+        "descricao_entrada": "A entrada contém dois números inteiros: a base e a altura do triângulo.",
+        "descricao_saida": "Imprima a área do triângulo.",
+        "exemplo_entrada": [10, 6],
+        "exemplo_saida": [30],
+        "pais": "brasil",
+        "numero_desafio": "08"
+    },
+    "9": {
+        "descricao": "Verifique o resultado de uma prova. Se a nota for maior ou igual a 6, o aluno será aprovado; caso contrário, será reprovado.",
+        "descricao_entrada": "A entrada contém um número inteiro representando a nota do aluno.",
+        "descricao_saida": "Imprima Aprovado quando a nota for maior ou igual a 6. Caso contrário, imprima Reprovado.",
+        "exemplo_entrada": [7],
+        "exemplo_saida": ["Aprovado"],
+        "pais": "brasil",
+        "numero_desafio": "09"
+    },
+    "10": {
+        "descricao": "Uma loja dá frete grátis para compras de 100 reais ou mais. Calcule o subtotal multiplicando a quantidade de produtos pelo preço de cada um. Se o subtotal for menor que 100, some 10 reais de frete.",
+        "descricao_entrada": "A entrada contém a quantidade de produtos e o preço de cada produto.",
+        "descricao_saida": "Imprima o total da compra: subtotal mais 10 reais de frete quando o subtotal for menor que 100.",
+        "exemplo_entrada": [5, 20],
+        "exemplo_saida": [100],
+        "pais": "brasil",
+        "numero_desafio": "10"
     }
 }

@@ -74,14 +74,15 @@
 
 .numero {
   color: var(--cor-ciano-escura);
-  font-size: 0.55rem;
+  font-size: 0.6rem;
   letter-spacing: 0.13em;
+  font-weight: 600;
 }
 
 .nome {
   font-size: 0.85rem;
   font-weight: 600;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.05em;
 }
 
 /* O status deixou de ser uma linha solta de texto e virou CHIP, como no
@@ -94,6 +95,7 @@
   color: var(--cor-cinza-escura);
   font-size: 0.58rem;
   letter-spacing: 0.1em;
+  font-weight: 600;
   padding: 0.2rem 0.45rem;
   text-transform: uppercase;
   white-space: nowrap;

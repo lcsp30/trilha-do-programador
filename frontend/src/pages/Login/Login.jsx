@@ -1,11 +1,29 @@
 import estilo from "./Login.module.css";
 import { FcGoogle } from "react-icons/fc";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 function Login() {
   const [loginAtivo, setLoginAtivo] = useState(true);
   const navigate = useNavigate();
+
+useEffect(() => {
+const desafios = [
+  { numero: 1, nome: "Olá Mundo!", status: "atual" },
+  { numero: 2, nome: "Soma dos produtos", status: "bloqueado" },
+  { numero: 3, nome: "Livros restantes", status: "bloqueado" },
+  { numero: 4, nome: "Doces para a festa", status: "bloqueado" },
+  { numero: 5, nome: "Divisão das passagens", status: "bloqueado" },
+  { numero: 6, nome: "Média das notas", status: "bloqueado" },
+  { numero: 7, nome: "Área do círculo", status: "bloqueado" },
+  { numero: 8, nome: "Área do triângulo", status: "bloqueado" },
+  { numero: 9, nome: "Aprovação na prova", status: "bloqueado" },
+  { numero: 10, nome: "Compra com frete", status: "bloqueado" },
+];
+
+localStorage.setItem("desafios", JSON.stringify(desafios));
+
+},[]);
 
   function entrarNaTrilha(event) {
     event.preventDefault();

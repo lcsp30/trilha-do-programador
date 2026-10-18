@@ -11,32 +11,6 @@ export class ErroDeTraducao extends Error {
   }
 }
 
-function validarInteiro(valor) {
-  if (typeof valor === "number" && Number.isInteger(valor)) {
-    return valor;
-  }
-
-  if (typeof valor !== "string") {
-    return false;
-  }
-
-  const texto = valor.trim();
-
-  const numeroSemAspas = /^\d+$/.test(texto);
-
-  if (numeroSemAspas) {
-    return Number(texto);
-  }
-
-  const numeroComAspas = /^(['"])(\d+)\1$/.exec(texto);
-
-  if (numeroComAspas) {
-    return Number(numeroComAspas[2]);
-  }
-
-  throw new Error(`${value} é inteiro!`);
-}
-
 const INICIO_IDENTIFICADOR = /[A-Za-zÀ-ÖØ-öø-ÿ_$]/;
 const PARTE_IDENTIFICADOR = /[A-Za-zÀ-ÖØ-öø-ÿ0-9_$]/;
 const IDENTIFICADOR_COMPLETO = /[A-Za-zÀ-ÖØ-öø-ÿ0-9_$."']/;
@@ -221,6 +195,7 @@ async function traduzir(code, entradas = []) {
             }
 
           }
+          break;
         case "texto":
            novoCode += "let";
           if (code[i] === " ") {
@@ -284,6 +259,8 @@ async function traduzir(code, entradas = []) {
           }
           break;
         case "mostrar":
+        case "imprimir":
+        case "exibir":
           novoCode += "console.log";
           break;
         case "leia": {
@@ -296,8 +273,14 @@ async function traduzir(code, entradas = []) {
             }
 
             if (code[i] === ")") {
-              let tipoVar = var_tipo[variavel];
-              if (entradas.length === 0) {
+              let tipoVar = var_tipo[variavel] ?? "variavel";
+
+              if(tipoVar === "variavel"){
+                novoCode += String.raw`
+${variavel} = await leitor.question("");
+                `;
+              }else{
+                             if (entradas.length === 0) {
                 novoCode += String.raw`
 ${variavel} = await leitor.question("");
 ${variavel} = validarTipoVariavel(${variavel}, "${variavel}", "${tipoVar}");
@@ -309,6 +292,8 @@ ${variavel} = validarTipoVariavel(${variavel}, "${variavel}", "${tipoVar}");
 indiceEntrada++;
 `;
               }
+              }
+ 
               i++;
               if (code[i] === ";") {
                 i++;
@@ -331,6 +316,7 @@ indiceEntrada++;
           novoCode += "if";
           break;
         case "senao":
+        case "senão":
           novoCode += "else";
           break;
 
@@ -546,8 +532,8 @@ indiceEntrada++;
     novoCode += "}\nmain();";
   }
 
-  console.log(novoCode);
-  console.log("-----------------------------------");
+  // console.log(novoCode);
+  // console.log("-----------------------------------");
   return novoCode;
 }
 
