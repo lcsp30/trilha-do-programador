@@ -200,9 +200,11 @@ function TerminalComponent({ ref, setExecutando}) {
                 // Código positivo é erro de verdade: o Ctrl+C (e o kill) devolve
                 // código negativo, e avisar ali só confundiria.
                 case "exit":
+                    if (mensagem.code > 0) {
                         terminalInstance.current?.write(
                             `\x1b[33mO programa terminou com erro.\x1b[0m\r\n`
                         );
+                    }
 
                     // Acabou o programa: o terminal fecha junto
                     encerrarTerminal();

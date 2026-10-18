@@ -5,25 +5,32 @@ import { useNavigate } from "react-router";
 
 function Login() {
   const [loginAtivo, setLoginAtivo] = useState(true);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  // Estados para controlar o bloqueio inicial do autocomplete
+  const [emailReady, setEmailReady] = useState(false);
+  const [passReady, setPassReady] = useState(false);
   const navigate = useNavigate();
 
-useEffect(() => {
-const desafios = [
-  { numero: 1, nome: "Olá Mundo!", status: "atual" },
-  { numero: 2, nome: "Soma dos produtos", status: "bloqueado" },
-  { numero: 3, nome: "Livros restantes", status: "bloqueado" },
-  { numero: 4, nome: "Doces para a festa", status: "bloqueado" },
-  { numero: 5, nome: "Divisão das passagens", status: "bloqueado" },
-  { numero: 6, nome: "Média das notas", status: "bloqueado" },
-  { numero: 7, nome: "Área do círculo", status: "bloqueado" },
-  { numero: 8, nome: "Área do triângulo", status: "bloqueado" },
-  { numero: 9, nome: "Aprovação na prova", status: "bloqueado" },
-  { numero: 10, nome: "Compra com frete", status: "bloqueado" },
-];
 
-localStorage.setItem("desafios", JSON.stringify(desafios));
+  useEffect(() => {
+    const desafios = [
+      { numero: 1, nome: "Olá Mundo!", status: "atual" },
+      { numero: 2, nome: "Soma dos produtos", status: "bloqueado" },
+      { numero: 3, nome: "Livros restantes", status: "bloqueado" },
+      { numero: 4, nome: "Doces para a festa", status: "bloqueado" },
+      { numero: 5, nome: "Divisão das passagens", status: "bloqueado" },
+      { numero: 6, nome: "Média das notas", status: "bloqueado" },
+      { numero: 7, nome: "Área do círculo", status: "bloqueado" },
+      { numero: 8, nome: "Área do triângulo", status: "bloqueado" },
+      { numero: 9, nome: "Aprovação na prova", status: "bloqueado" },
+      { numero: 10, nome: "Compra com frete", status: "bloqueado" },
+    ];
 
-},[]);
+    localStorage.setItem("desafios", JSON.stringify(desafios));
+
+  }, []);
 
   function entrarNaTrilha(event) {
     event.preventDefault();
@@ -94,17 +101,25 @@ localStorage.setItem("desafios", JSON.stringify(desafios));
                 <form onSubmit={entrarNaTrilha}>
                   <div style={{ marginBottom: "20px" }}>
                     <h3>Login</h3>
-                     <hr style={{ margin: "0.5rem 0px" }} />
+                    <hr style={{ margin: "0.5rem 0px" }} />
                   </div>
                   <div className={estilo.divInput}>
                     <label htmlFor="email">Email</label>
                     <br />
-                    <input type="email" name="email" />
+                    <input type="email" name="email" value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Seu e-mail"
+                      readOnly={!emailReady}
+                      onFocus={() => setEmailReady(true)} />
                   </div>
                   <div className={estilo.divInput}>
                     <label htmlFor="senha">Senha</label>
                     <br />
-                    <input type="password" name="senha" />
+                    <input type="password" name="senha" value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="Sua senha"
+                      readOnly={!passReady}
+                      onFocus={() => setPassReady(true)} />
                   </div>
                   <div className={estilo.divBtn}>
                     <button type="submit">Login</button>
@@ -116,7 +131,7 @@ localStorage.setItem("desafios", JSON.stringify(desafios));
                 <form onSubmit={entrarNaTrilha}>
                   <div style={{ marginBottom: "20px" }}>
                     <h3>Cadastro</h3>
-                     <hr style={{ margin: "0.5rem 0px" }} />
+                    <hr style={{ margin: "0.5rem 0px" }} />
                   </div>
                   <div className={estilo.divInput}>
                     <label htmlFor="nome">Nome</label>
@@ -139,13 +154,13 @@ localStorage.setItem("desafios", JSON.stringify(desafios));
                 </form>
               )}
 
-              <hr className={estilo.hr2} />
+              {/* <hr className={estilo.hr2} />
               <p style={{ textAlign: "center", marginBottom: "7px" }}>ou</p>
 
               <button className={estilo.btnGoogle} type="button" onClick={() => navigate("/niveis")}>
                 <FcGoogle size={25} />
                 Entrar com o Google
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
